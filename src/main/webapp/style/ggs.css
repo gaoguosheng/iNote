@@ -1,0 +1,22 @@
+.normalFont{font-size: 10pt;line-height: 26px;}
+.titleFont{color: #1e90ff;font-size: 18pt;font-weight: bold;line-height: 36px;}
+.borderTable{border-collapse: collapse;border-color: #999}
+body{margin-top: 1px;margin-bottom: 1px;}
+img{vertical-align: text-bottom;}
+a:link {
+    text-decoration: none;
+    color:#00008b;
+}
+a:visited {
+    text-decoration: none;
+    color:#00008b;
+
+}
+a:hover {
+    text-decoration: none;
+    color: #00008b;
+}
+a:active {
+    text-decoration: none;
+    color:#00008b;
+}
