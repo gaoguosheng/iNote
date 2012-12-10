@@ -358,8 +358,8 @@
                         <a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_getFolderArticles(111,'考勤');return false;">考勤记录</a>
                     </div>
                     <div>
-                        <a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_getFolderArticles(95,'会议');return false;">部门会议</a>
-                        <a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_getFolderArticles(41,'学习会');return false;">学习会</a>
+                        <a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_getCsortList(4);return false;">部门会议</a>
+                        <a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_getCsortList(5);return false;">学习会</a>
                         </div>
                     <div><a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_getFolderArticles(13,'计划');return false;">工作计划</a>
                         <a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_getCsortList(1);return false;">周工作总结</a></div>
