@@ -4,7 +4,7 @@ import com.ggs.comm.Config;
 import com.ggs.util.DateUtil;
 import com.ggs.util.SQLiteUtil;
 import com.ggs.util.mail.AjavaSendMail;
-import com.ykesoft.service.MsgClient;
+
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -18,7 +18,7 @@ import java.util.*;
  * Time: 上午10:00
  * To change this template use File | Settings | File Templates.
  */
-//@WebListener
+@WebListener
 public class ContextListener implements ServletContextListener {
     private SQLiteUtil sqLiteUtil = new SQLiteUtil();
     private Timer timer  =null;
@@ -34,22 +34,16 @@ public class ContextListener implements ServletContextListener {
                 //获取当前日期
                 String date = DateUtil.getDate("yyyy-MM-dd");
                 String datetime=DateUtil.getDate("yyyy-MM-dd HH:mm");
-                //获取当前日期下有无相关进程列表
-                List<Map<String,String>> taskStartList = sqLiteUtil.queryForList("select DISTINCT a.userid,b.realname,b.qq,b.mobile from t_progress a left join t_user b on a.userid=b.id where startdate='"+date+"'");
-                //获取当前日期下有无相关进程列表
-                List<Map<String,String>> taskEndList = sqLiteUtil.queryForList("select DISTINCT a.userid,b.realname,b.qq,b.mobile from t_progress a left join t_user b on a.userid=b.id where enddate='"+date+"'");
 
                 //每周自动发送周工作总结提醒
                 String fday=DateUtil.getCurrWeekDay(Config.WEEK_SUMM_DAY)+" "+Config.WEEK_SUMM_TIME;
                 if(fday.equals(datetime)){
-
-
                     for(Map<String,String> user:userList){
                         String realname=user.get("realname");
                         String qq =user.get("qq");
                         String mobile=user.get("mobile");
                         String to=qq+"@qq.com";
-                        String title=realname+"，您还未撰写本周工作总结";
+                        String title=realname+"，"+Config.SOFT_NAME+"提醒您撰写本周工作总结";
                         StringBuilder content = new StringBuilder();
                         content.append("请撰写本周（"+DateUtil.getCurrWeekDays()+"）工作总结，如已撰写，请忽略此提醒。<br/>");
                         //发送邮件
@@ -57,48 +51,62 @@ public class ContextListener implements ServletContextListener {
                     }
                 }
                 //有相关新进程开始
-                if(taskStartList.size()>0 && DateUtil.getDate("HH:mm").equals(Config.TASK_TIME)){
-                    for(Map<String,String>user:taskStartList){
+                if(DateUtil.getDate("HH:mm").equals(Config.TASK_TIME)){
+                    for(Map<String,String>user:userList){
                         String realname=user.get("realname");
-                        String userid=user.get("userid");
+                        String userid=user.get("id");
                         String qq = user.get("qq");
                         StringBuilder content = new StringBuilder();
-                        content.append("今天您的新任务列表如下:<br/>");
-                        List<Map<String,String>> taskList = sqLiteUtil.queryForList("select * from t_progress where userid="+userid+" and startdate='"+date+"'");
+                        StringBuilder sql = new StringBuilder();
+                        sql.append(" select a.*,1 ptype from t_progress a where userid="+userid+" and startdate='"+date+"'");
+                        sql.append(" union");
+                        sql.append(" select a.*,2 ptype from t_progress a where userid="+userid+" and enddate='"+date+"'");
+                        sql.append(" union");
+                        sql.append(" select a.*,3 ptype from t_progress a where userid="+userid+" and realdate='' and enddate<'"+date+"'");
+                        List<Map<String,String>> taskList = sqLiteUtil.queryForList(sql.toString());
+                        StringBuilder startTaskHtml=new StringBuilder();
+                        StringBuilder endTaskHtml=new StringBuilder();
+                        StringBuilder delayTaskHtml=new StringBuilder();
                         for(Map<String,String>task:taskList){
                             String cname = task.get("cname");
                             String startdate=task.get("startdate");
                             String enddate=task.get("enddate");
-                            content.append(cname+" 计划起始日期:"+startdate+" 计划结束日期:"+enddate+"<br/>");
+                            String ptype=task.get("ptype");
+                            String cont =cname+" 计划起始日期:"+startdate+" 计划结束日期:"+enddate+"<br/>";
+                            if(ptype.equals("1")){
+                                //新任务
+                                startTaskHtml.append(cont);
+                            }else if(ptype.equals("2")){
+                                //本日需完成的任务
+                                endTaskHtml.append(cont);
+                            }else if(ptype.equals("3")){
+                                //超时任务
+                                delayTaskHtml.append(cont);
+                            }
                         }
-                        String title=realname+"，今天您有新的工作任务";
-                        String to = qq+"@qq.com";
-                        //发送邮件
-                        sendMail(to,title,content.toString(),filename);
+                        if(taskList.size()>0){
+                            String title=realname+"，"+Config.SOFT_NAME+"提醒您今天工作任务";
+                            String to = qq+"@qq.com";
+                            if(startTaskHtml.length()>0){
+                                content.append("<b>本日新任务：</b><br/>");
+                                content.append(startTaskHtml);
+                            }
+                            if(endTaskHtml.length()>0){
+                                content.append("<b>本日完成的任务：</b><br/>");
+                                content.append(endTaskHtml);
+                            }
+                            if(delayTaskHtml.length()>0){
+                                content.append("<b><font color='red'>加紧完成的超时任务：</font></b><br/>");
+                                content.append(delayTaskHtml);
+                            }
+                            //发送邮件
+                            sendMail(to,title,content.toString(),filename);
+                        }
+
+
                     }
                 }
 
-                //有相关新进程结束
-                if(taskEndList.size()>0 && DateUtil.getDate("HH:mm").equals(Config.TASK_TIME)){
-                    for(Map<String,String>user:taskEndList){
-                        String realname=user.get("realname");
-                        String userid=user.get("userid");
-                        String qq = user.get("qq");
-                        StringBuilder content = new StringBuilder();
-                        content.append("今天您需要结束的工作列表如下:<br/>");
-                        List<Map<String,String>> taskList = sqLiteUtil.queryForList("select * from t_progress where userid="+userid+" and enddate='"+date+"'");
-                        for(Map<String,String>task:taskList){
-                            String cname = task.get("cname");
-                            String startdate=task.get("startdate");
-                            String enddate=task.get("enddate");
-                            content.append(cname+" 计划起始日期:"+startdate+" 计划结束日期:"+enddate+"<br/>");
-                        }
-                        String title=realname+"，今天您需要结束的工作任务";
-                        String to = qq+"@qq.com";
-                        //发送邮件
-                        sendMail(to,title,content.toString(),filename);
-                    }
-                }
             }
         },0,60000);
     }
@@ -128,39 +136,7 @@ public class ContextListener implements ServletContextListener {
         sm.setOut();
     }
 
-    /**
-     * 获取星期
-     * */
-    private String getWeek(int n){
-        String str="";
-        switch ( n )
-        {
-            case 0:
-            str="星期一" ;
-            break;
-            case 1 :
-                str="星期二" ;
-                break;
-            case 2 :
-                str="星期三" ;
-                break;
-            case 3 :
-                str="星期四" ;
-                break;
-            case 4 :
-                str="星期五" ;
-                break;
-            case 5 :
-                str="星期六" ;
-                break;
-            case 6 :
-                str="星期日" ;
-                break;
-        }
 
-        return str;
-
-    }
 
 
 }

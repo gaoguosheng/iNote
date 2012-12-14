@@ -61,7 +61,7 @@
     function f_checkLogin(){
         var json = $GGS.getJSON("checkLogin<%=Config.EXT%>",{});
         if(json.status==0){
-            alert("服务器超时或服务器正在更新，请您退出后重新登录！");
+            alert("<%=Config.SOFT_NAME%>服务器超时或服务器正在更新，请您退出后重新登录！");
             window.location="login.jsp";
         }
     }
