@@ -57,28 +57,34 @@
     </script>
 </head>
 <body>
-<%@include file="top.jsp"%>
-<h3 align="center">用户登陆</h3>
-<form id="loginForm">
-<table align="center" width="400" border="0"  cellpadding="5" class="normalFont">
-    <tr>
-        <td align="right" width="30%">用户：</td>
-        <td width="70%"><input type="text" name="username" id="username" class="text" style="width: 180px;" value="${cookie.username.value}"></td>
-    </tr>
-    <tr>
-        <td align="right">密码：</td>
-        <td><input type="password" name="password" id="password"  class="text" style="width: 180px;"></td>
-    </tr>
-    <tr>
-        <td>&nbsp;</td>
-        <td>
-            <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" onclick="f_login();">登陆</a>
-            <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-reload'" onclick="loginForm.reset();">重置</a>
-        </td>
-    </tr>
-</table>
-</form>
-<jsp:include page="/foot.jsp" flush="true"></jsp:include>
+<div id="dlg" class="easyui-dialog" title="用户登录" resizable="false" draggable="false" closable="false" data-options="iconCls:'icon-user'" style="width:550px;height:280px;padding:10px">
+    <h1 align="center"><%=Config.SOFT_NAME%></h1>
+    <form id="loginForm">
+        <table align="center" width="400" border="0"  cellpadding="5" class="normalFont">
+            <tr>
+                <td rowspan="3"><img src="images/logo.jpg"></td>
+                <td align="right" width="30%">用户：</td>
+                <td width="70%"><input type="text" name="username" id="username" class="text" style="width: 180px;" value="${cookie.username.value}"></td>
+            </tr>
+            <tr>
+                <td align="right">密码：</td>
+                <td><input type="password" name="password" id="password"  class="text" style="width: 180px;"></td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>
+                    <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" onclick="f_login();">登陆</a>
+                    <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-reload'" onclick="loginForm.reset();">重置</a>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <jsp:include page="/foot.jsp" flush="true"></jsp:include>
+</div>
+
+
+
+
 
 
 </body>
