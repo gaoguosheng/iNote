@@ -63,7 +63,7 @@ public class ProgressDao {
             sql.append(" order by "+model.getSort()+" "+model.getOrder());
         } else{
             //按周期升序
-            sql.append(" order by pc asc,priority desc,startdate desc ");
+            sql.append(" order by pc asc,enddate desc,priority desc ");
         }
 
         List rows = this.sqLiteUtil.queryForList("select * from ("+sql+") limit "+model.getRows()+" offset "+(model.getPage()-1)*model.getRows());

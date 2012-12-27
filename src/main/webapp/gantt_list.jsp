@@ -45,7 +45,7 @@ function f_getArticles(){
 
 
     $('#gridTable').datagrid({
-        title:"工作进程",
+        //title:"工作进程",
         url:myUrl,
         pageSize:20,
         frozenColumns:[[
@@ -247,6 +247,8 @@ function f_getUsers(){
  * 打开编辑窗口
  * */
 function f_openGanttDialog(proid){
+    $("#startEndDateBody").css("display","block");
+    $("#startEndDateSpanBody").css("display","none");
     $("#ganttWindow").css("display","block");
     $("#okBtn").css("display","");
     $("#delBtn").css("display","");
@@ -269,12 +271,15 @@ function f_openGanttDialog(proid){
         $("#proid").val(json.id);
         $("#cname").val(json.cname);
         $("#userid").val(json.userid);
-        $("#startdate").val(json.startdate);
-        $("#enddate").val(json.enddate);
+        $('#startdate').datebox('setValue',json.startdate);
+        $("#startdateSpan").html(json.startdate);
+        $('#enddate').datebox('setValue',json.enddate);
+        $("#enddateSpan").html(json.enddate);
         $("#pc").val(json.pc);
         $("#prjid").val(json.prjid);
         $("#memo").val(json.memo);
-        $("#realdate").val(json.realdate);
+        $('#realdate').datebox('setValue',json.realdate);
+
         $("#priority").val(json.priority);
         $("#difficulty").val(json.difficulty);
 
@@ -317,8 +322,8 @@ function f_openGanttDialog(proid){
            $("#delBtn").css("display","none");
            $("#cname").attr("disabled","disabled");
            $("#userid").attr("disabled","disabled");
-           $("#startdate").attr("disabled","disabled");
-           $("#enddate").attr("disabled","disabled");
+           $("#startEndDateBody").css("display","none");
+           $("#startEndDateSpanBody").css("display","block");
            $("#prjid").attr("disabled","disabled");
            $("#priority").attr("disabled","disabled");
            $("#difficulty").attr("disabled","disabled");
@@ -330,15 +335,15 @@ function f_openGanttDialog(proid){
 
     }else{
         $("#optionalBody").css("display","none");
-        $("#cname").val("新进程");
+        $("#cname").val("新工作进程");
         $("#userid").attr("selectedIndex","0");
-        $("#startdate").val("<%=DateUtil.getDate("yyyy-MM-dd")%>");
-        $("#enddate").val("<%=DateUtil.getDate("yyyy-MM-dd")%>");
+        $('#startdate').datebox('setValue','<%=DateUtil.getDate("yyyy-MM-dd")%>');
+        $('#enddate').datebox('setValue','<%=DateUtil.getDate("yyyy-MM-dd")%>');
         $("#pc").attr("selectedIndex","0");
         $("#proid").val("");
         $("#prjid").attr("selectedIndex","0");
         $("#memo").val("");
-        $("#realdate").val("");
+        $('#realdate').datebox('setValue','');
         $("#priority").attr("selectedIndex","0");
         $("#difficulty").attr("selectedIndex","0");
     }
@@ -354,6 +359,7 @@ function f_openGanttDialog(proid){
                 collapsible:false
             }
     );
+
 }
 /**
  * 关闭窗口
@@ -371,12 +377,12 @@ function f_saveProgress(){
         return false;
     }
 
-    if($("#pc").val()<100 && $("#realdate").val()!=""){
+    if($("#pc").val()<100 && $("#realdate").datebox('getValue')!=""){
         f_alertError("进度小于100时，不能填写完成日期！");
         return false;
     }
 
-    if($("#pc").val()==100 && $("#realdate").val()==""){
+    if($("#pc").val()==100 && $("#realdate").datebox('getValue')==""){
         f_alertError("进度为100时，完成日期不能为空！");
         return false;
     }
@@ -386,12 +392,12 @@ function f_saveProgress(){
         proid:$("#proid").val(),
         cname:$("#cname").val(),
         userid:$("#userid").val(),
-        startdate:$("#startdate").val(),
-        enddate:$("#enddate").val(),
+        startdate:$('#startdate').datebox('getValue'),
+        enddate:$('#enddate').datebox('getValue'),
         pc:$("#pc").val(),
         memo:$("#memo").val(),
         prjid:$("#prjid").val(),
-        realdate:$("#realdate").val()  ,
+        realdate:$('#realdate').datebox('getValue') ,
         priority:$("#priority").val(),
         difficulty:$("#difficulty").val()
     });
@@ -464,7 +470,7 @@ $(function(){
 </head>
 <body>
 <%@include file="top.jsp"%>
-<table border="1" cellpadding="5" cellspacing="0" width="100%" class="borderTable normalFont">
+<table border="0" cellpadding="0" cellspacing="0" width="100%" class="borderTable normalFont">
     <tr>
 
         <td>
@@ -528,12 +534,28 @@ $(function(){
                 </select>
             </td>
         </tr>
+        <tbody id="startEndDateBody">
         <tr>
             <td align="right" valign="top">计划起始日期</td>
-            <td><input type="text" id="startdate"  class="Wdate" size="10" onClick="WdatePicker()" readonly="readonly" ></td>
+            <td>
+                <input id="startdate" class="easyui-datebox" data-options="formatter:myformatter">
+                </td>
             <td align="right" valign="top">计划结束日期</td>
-            <td><input type="text" id="enddate"  class="Wdate" size="10" onClick="WdatePicker()" readonly="readonly" ></td>
+            <td>
+                <input id="enddate" class="easyui-datebox" data-options="formatter:myformatter"></td>
         </tr>
+        </tbody>
+        <tbody id="startEndDateSpanBody">
+        <tr>
+            <td align="right" valign="top">计划起始日期</td>
+            <td>
+                <span id="startdateSpan"></span>
+            </td>
+            <td align="right" valign="top">计划结束日期</td>
+            <td>
+                <span id="enddateSpan"></span></td>
+        </tr>
+        </tbody>
         <tbody id="optionalBody">
             <tr>
                 <td align="right" valign="top">完成百份比</td>
@@ -545,7 +567,9 @@ $(function(){
                     </select>
                 </td>
                 <td align="right" valign="top">实际完成日期</td>
-                <td><input type="text" id="realdate"  class="Wdate" size="10" onClick="WdatePicker({minDate:'<%=DateUtil.getDate("yyyy-MM-dd")%>'})" readonly="readonly" ></td>
+                <td>
+                    <input id="realdate" class="easyui-datebox" data-options="formatter:myformatter">
+                    </td>
             </tr>
         </tbody>
         <tr>
@@ -570,10 +594,10 @@ $(function(){
     <c:if test="${sessionScope.adminModel!=null}">
         <a href='#' onclick='f_openGanttDialog(undefined);' class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">新增进程</a>
      </c:if>
-    <a  href="#"  class="easyui-linkbutton" data-options="plain:true" onclick="f_getAllProgress();" >全部</a>
     <c:if test="${sessionScope.adminModel!=null}">
         <a href="#"  class="easyui-menubutton" data-options="menu:'#myprocessDiv'" >我的进程</a>
     </c:if>
+    <a  href="#"  class="easyui-linkbutton" data-options="plain:true" onclick="f_getAllProgress();" >全部进程</a>
     月份：<select id="dateListSel"  >
         <option value="">全部</option>
     </select>
@@ -598,6 +622,21 @@ $(function(){
     <div onclick="f_getMyCreaProgress();" >我创建的进程</div>
 </div>
 </c:if>
+
+<script type="text/javascript">
+    function myformatter(date){
+        var y = date.getFullYear();
+        var m = date.getMonth()+1;
+        var d = date.getDate();
+        return y+'-'+(m<10?('0'+m):m)+'-'+(d<10?('0'+d):d);
+    }
+    function f_query(){
+        var d1=$('#creattime1').datebox('getValue');
+        var d2=$('#creattime2').datebox('getValue');
+        f_getArticles({creattime1:d1,creattime2:d2});
+    }
+
+</script>
 
 
 <%@include file="foot.jsp"%>

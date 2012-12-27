@@ -74,7 +74,7 @@
             }
             myUrl=encodeURI(myUrl);
             $('#gridTable').datagrid({
-                title:"通讯录",
+                //title:"通讯录",
                 url:myUrl,
                 pageSize:20,
                 frozenColumns:[[
@@ -308,7 +308,7 @@
 <body>
 <%@include file="top.jsp"%>
 
-<table border="1" cellpadding="5" cellspacing="0" width="100%" class="borderTable normalFont">
+<table border="0" cellpadding="0" cellspacing="0" width="100%" class="borderTable normalFont">
     <tr>
         <td valign="top" style="width: 220px;padding: 8px;">
             <div><a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_getArticles({userid:${sessionScope.adminModel.userid}});f_clearClassSelect();return false;">我的联系人</a></div>
@@ -333,7 +333,7 @@
             </table>
             <script type="text/javascript">
 
-                $("#gridTable").css("height",screen.availHeight-250);
+                $("#gridTable").css("height",screen.availHeight-260);
             </script>
             </div>
         </td>

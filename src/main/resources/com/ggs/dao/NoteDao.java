@@ -178,11 +178,22 @@ public class NoteDao {
      * 检查登陆
      * */
     public boolean checkLogin(String username,String password){
-       int counter =this.sqLiteUtil.queryForInt("select count(*) from t_user where username=? and password=?",new Object[]{
+       int counter =this.sqLiteUtil.queryForInt("select count(*) from t_user where flag=1 and username=? and password=?",new Object[]{
                username,password
        });
        return counter>0?true:false;
     }
+
+    /**
+     * 检查登陆
+     * */
+    public boolean checkLoginFlag(String username){
+        int counter =this.sqLiteUtil.queryForInt("select count(*) from t_user where flag=1 and username=?",new Object[]{
+                username
+        });
+        return counter>0?true:false;
+    }
+
    /**
     * 获取用户id
     * */
@@ -259,7 +270,7 @@ public class NoteDao {
      * 获取用户列表
      * */
     public List getUsers(){
-       return this.sqLiteUtil.queryForList("select * from t_user");
+       return this.sqLiteUtil.queryForList("select * from t_user where flag=1");
     }
 
     /**

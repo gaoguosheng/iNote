@@ -30,8 +30,12 @@
             //md5加密
             pwd=hex_md5(pwd);
             var json = $GGS.getJSON("login<%=Config.EXT%>",{username:uname,password:pwd});
-            if(json.flag!="1"){
-                f_alertError("用户名或者密码不正确！");
+            if(json.flag=="-1"){
+                f_alertError("对不起，您的账号已停用！");
+                return false;
+            }
+            if(json.flag=="0"){
+                f_alertError("对不起，用户名或者密码不正确！");
                 return false;
             }
             //刷新首页
@@ -57,14 +61,14 @@
     </script>
 </head>
 <body>
-<div id="dlg" class="easyui-dialog" title="用户登录" resizable="false" draggable="false" closable="false" data-options="iconCls:'icon-user'" style="width:550px;height:280px;padding:10px">
-    <h1 align="center"><%=Config.SOFT_NAME%></h1>
+<div id="dlg" class="easyui-dialog" title="用户登录" resizable="false" draggable="false" closable="false" data-options="iconCls:'icon-user'" style="width:580px;height:320px;padding:10px">
+    <div align="center" style="font-size: 24pt;font-weight: bold;padding: 10px;"><%=Config.SOFT_NAME%></div>
     <form id="loginForm">
-        <table align="center" width="400" border="0"  cellpadding="5" class="normalFont">
+        <table align="center" width="100%" border="0"  cellpadding="5" class="normalFont">
             <tr>
-                <td rowspan="3"><img src="images/logo.jpg"></td>
-                <td align="right" width="30%">用户：</td>
-                <td width="70%"><input type="text" name="username" id="username" class="text" style="width: 180px;" value="${cookie.username.value}"></td>
+                <td rowspan="3" align="center"><img src="images/logo-m.jpg"></td>
+                <td align="right">用户：</td>
+                <td><input type="text" name="username" id="username" class="text" style="width: 180px;" value="${cookie.username.value}"></td>
             </tr>
             <tr>
                 <td align="right">密码：</td>
@@ -79,7 +83,9 @@
             </tr>
         </table>
     </form>
-    <jsp:include page="/foot.jsp" flush="true"></jsp:include>
+    <div  align="center">
+        <span  class="normalFont"><%=Config.COPY%></span>
+    </div>
 </div>
 
 

@@ -46,7 +46,7 @@ function f_getArticles(data){
     }
     myUrl=encodeURI(myUrl);
     $('#gridTable').datagrid({
-        title:"问题反馈",
+        //title:"问题反馈",
         url:myUrl,
         pageSize:20,
         frozenColumns:[[
@@ -75,6 +75,7 @@ function f_getArticles(data){
                 }},
             {field:'username',title:'姓名',width:60},
             {field:'mobile',title:'手机',width:120},
+            {field:'memo',title:'问题',width:300},
             {field:'creator',title:'创建人',width:60,sortable:true},
             {field:'realname',title:'处理人',width:60},
             {field:'processtime',title:'处理时间',width:120,sortable:true}
@@ -235,7 +236,7 @@ $(function(){
 <body>
 <%@include file="top.jsp"%>
 
-<table border="1" cellpadding="5" cellspacing="0" width="100%" class="borderTable normalFont">
+<table border="0" cellpadding="0" cellspacing="0" width="100%" class="borderTable normalFont">
     <tr>
         <td valign="top">
             <!-- 列表-->

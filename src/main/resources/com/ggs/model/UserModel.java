@@ -7,13 +7,31 @@ package com.ggs.model;
  * Time: 下午5:00
  * To change this template use File | Settings | File Templates.
  */
-public class UserModel {
+public class UserModel extends BaseModel{
     private String userid;
     private String username;
     private String password;
     private String realname;
     private String flag;
     private String  onlinetimes;
+    private String qq;
+    private String mobile;
+
+    public String getQq() {
+        return qq;
+    }
+
+    public void setQq(String qq) {
+        this.qq = qq;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
 
     public String getOnlinetimes() {
         return onlinetimes;

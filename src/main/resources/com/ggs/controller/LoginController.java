@@ -31,6 +31,12 @@ public class LoginController extends  BaseController {
     public Object login(UserModel model,HttpSession session,HttpServletResponse response){
         String username = model.getUsername();
         String password = model.getPassword();
+        boolean loginFlag= noteDao.checkLoginFlag(username);
+        if(!loginFlag){
+            Map map = new HashMap();
+            map.put("flag",-1);
+            return this.toJson(map);
+        }
         boolean flag = noteDao.checkLogin(username,password);
         if(flag){
             UserModel userModel = this.noteDao.getUserModel(username);

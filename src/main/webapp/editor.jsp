@@ -127,8 +127,6 @@
             f_clearData();
             var folderid = f_getCurrentFolderid();
             var data="title="+$("#searchKey").val();
-            data+="&creattime1="+$("#creattime1").val();
-            data+="&creattime2="+$("#creattime2").val();
             data+="&userid="+document.all.useridSel.value;
             if(folderid){
                 data+="&folderid="+folderid;
@@ -546,7 +544,7 @@
                 toolbars:[['FullScreen', 'Source','Undo','Redo','Bold','Italic', 'Underline','FontFamily','FontSize','ForeColor', 'BackColor', '|',
                     'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyJustify','|',
                     'Link','InsertTable','InsertImage','Emotion','attachment','Attachment','HighlightCode','|']],
-                minFrameHeight:screen.availHeight-320,
+                minFrameHeight:screen.availHeight-330,
                 //关闭字数统计
                 wordCount:false,
                 //关闭elementPath
@@ -569,7 +567,7 @@
 <body>
     <%@include file="top.jsp"%>
     <input type="hidden" name="articleid" id="articleid"/>
-    <table border="1" cellpadding="5" cellspacing="0" width="100%" class="borderTable normalFont">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="borderTable normalFont">
         <tr style="display: none">
             <td colspan="3">
                 <div class="normalFont" >
@@ -580,9 +578,6 @@
                     </select>
                     </span>
                 关键字：<input type="text" name="searchKey" id="searchKey" style="width: 200px;"  onblur="f_trim(this);" onkeydown="f_enter_search();">
-                创建时间：
-                <input type="text" id="creattime1"  class="Wdate" size="10" onClick="WdatePicker()" readonly="readonly" > 至
-                <input type="text" id="creattime2"  class="Wdate" size="10" onClick="WdatePicker()" readonly="readonly" >
                <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true" title="检索笔记" onclick="f_getArticles();" >检索</a>
                </span>
                 </div>
@@ -699,7 +694,7 @@
 
     </div>
     <script type="text/javascript">
-        var myheight=280;
+        var myheight=290;
         $("#articleTreeDiv").css("height",screen.availHeight-myheight);
         $("#folderTreeDiv").css("height",screen.availHeight-myheight);
     </script>

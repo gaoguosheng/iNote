@@ -9,7 +9,7 @@
 <%@ page import="com.ggs.comm.Config" %>
 <%@ page import="com.ggs.util.DateUtil" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%--
 <div style="margin-bottom: 5px;">
     <b class="b1"></b><b class="b2 d1"></b><b class="b3 d1"></b><b class="b4 d1"></b>
     <div class="b d1 k" style="height: 60px;">
@@ -119,7 +119,7 @@
                 if(i==0 && counter>0){
                     $("#topCounterSpan"+(i+1)).html("（<font color='red'>"+counter+"</font>）");
                     $("#homeLink").attr("title","我有"+counter+"个待处理事项");
-                    div+="<div style='padding: 8px;'><a href='index.jsp'>您还有 <font color='red'>"+counter+"</font> 个待处理事项</a></div>";
+                    div+="<div style='padding: 8px;'><a href='main.jsp'>您还有 <font color='red'>"+counter+"</font> 个待处理事项</a></div>";
                 }else if(i==1 && counter>0){
                     $("#topCounterSpan"+(i+1)).html("（<font color='red' title='"+counter+"个未完成的工作进程'>"+counter+"</font>）");
                     $("#ganttLink").attr("title","我有"+counter+"个未完成的工作进程");
@@ -205,5 +205,5 @@
         </c:if>
 
     });
-</script>
+</script>--%>
 

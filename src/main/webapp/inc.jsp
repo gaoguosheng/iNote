@@ -10,7 +10,7 @@
 <c:if test="${isCheckLogin!=null}">
     <%
         if(session.getAttribute("adminModel")==null){
-            response.sendRedirect("login.jsp");
+           out.print("<script>top.location='login.jsp';</script>;");
         }
     %>
 </c:if>
@@ -28,25 +28,12 @@
 <link rel="stylesheet" type="text/css" href="js/easyui/themes/icon.css">
 <link rel="stylesheet" href="js/zTree/css/zTreeStyle/zTreeStyle.css" type="text/css">
 <link rel="stylesheet" type="text/css" href="style/ggs.css"/>
-<style type="text/css">
-    .b1,.b2,.b3,.b4,.b1b,.b2b,.b3b,.b4b,.b{display:block;overflow:hidden;}
-    .b1,.b2,.b3,.b1b,.b2b,.b3b{height:1px;}
-    .b2,.b3,.b4,.b2b,.b3b,.b4b,.b{border-left:1px solid #999;border-right:1px solid #999;}
-    .b1,.b1b{margin:0 5px;background:#999;}
-    .b2,.b2b{margin:0 3px;border-width:2px;}
-    .b3,.b3b{margin:0 2px;}
-    .b4,.b4b{height:2px;margin:0 1px;}
-    .d1{background:#F7F8F9;}
-    .k {height:50px;}
 
-
-</style>
 <script type="text/javascript" src="js/jquery/jquery-1.4.4.min.js"></script>
 <script type="text/javascript" src="js/easyui/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="js/easyui/easyui-lang-zh_CN.js"></script>
 <script type="text/javascript" charset="utf-8" src="js/ueditor/editor_config.js"></script>
 <script type="text/javascript" charset="utf-8" src="js/ueditor/editor_all_min.js"></script>
-<script language="javascript" type="text/javascript" src="js/My97DatePicker/WdatePicker.js"></script>
 <script type="text/javascript" src="js/zTree/js/jquery.ztree.all-3.1.min.js"></script>
 <script type="text/javascript" src="js/md5.js"></script>
 <script type="text/javascript" src="js/ggs.js"></script>
@@ -202,17 +189,7 @@
     }
 
 
-    /***
-     退出
-     *
-     */
-    function f_logout(){
-        $.messager.confirm('提示', '是否确定要退出<%=Config.SOFT_NAME%>?', function(r){
-            if (r){
-                location.href = 'logout.jsp';
-            }
-        });
-    }
+
 
 
     /**
@@ -232,6 +209,9 @@
         {grade:11,miniute:2457600,img:"<img src='images/grades/moon.gif'><img src='images/grades/moon.gif'><img src='images/grades/star.gif'><img src='images/grades/star.gif'><img src='images/grades/star.gif'>"},
         {grade:12,miniute:4915200,img:"<img src='images/grades/sun.gif'>"}
     ];
+
+
+
 
 
 
