@@ -80,7 +80,7 @@
                         break;
                     }
                 }
-                var gradestr=users[i].realname+" <span title='在线"+currhour+"小时，还要"+remainhour+"小时升级' style='color:#ff8c00;font-weight: bold;'>"+currgrade+"级 "+img+"</span>";
+                var gradestr=users[i].username+" "+users[i].realname+" <span title='在线"+currhour+"小时，还要"+remainhour+"小时升级' style='color:#ff8c00;font-weight: bold;'>"+currgrade+"级 "+img+"</span>";
                 if(users[i].id=="${sessionScope.adminModel.userid}") $("#topGradeSpan").html(gradestr);
                 div+="<div style='padding: 3px;'>";
 
