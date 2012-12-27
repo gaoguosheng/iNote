@@ -254,8 +254,8 @@ public class NoteDao {
      * 修改密码
      * */
 
-    public void updatePwd(String username,String password){
-        this.sqLiteUtil.update("update t_user set password=? where username=?",new Object[]{password,username});
+    public void updatePwd(String userid,String password){
+        this.sqLiteUtil.update("update t_user set password=? where id=?",new Object[]{password,userid});
     }
 
     /**

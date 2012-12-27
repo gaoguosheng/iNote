@@ -37,9 +37,10 @@
                         <a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_showOnlineDialog();return false;">在线人员（<span style="color: red;" id="onlineCountSpan"></span>）</a>&nbsp;
                         <c:choose>
                             <c:when test="${sessionScope.adminModel!=null}">
-                                <a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_openUserWindow();" title="个人资料">
+                                <a href="#" class="easyui-linkbutton" data-options="plain:true">
                                     <span id="topGradeSpan"></span>
                                 </a>&nbsp;
+                                <a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_openUserWindow();;return false;" >修改资料</a>&nbsp;
                                 <a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_showPwdDialog();;return false;" >修改密码</a>&nbsp;
                                 <a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_logout();return false;">退出</a>
                             </c:when>
@@ -52,6 +53,7 @@
             </tr>
         </table>
         <div style="padding:5px;border:1px solid #ddd">
+
             <a id="homeLink"  href="#" onclick="f_addTab('首页','main.jsp',false);" class="easyui-linkbutton" data-options="plain:true"><img src="images/home.png"> 首页<span id='topCounterSpan1'></span></a>
             <a id="editorLink"   href="#" onclick="f_addTab('撰写笔记','editor.jsp',true);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-edit'">撰写笔记</a>
             <a id="ganttLink"  href="#" onclick="f_addTab('工作进程','gantt_list.jsp',true);"  class="easyui-linkbutton" data-options="plain:true"><img src="images/issue.png"width="16" height="16"> 工作进程<span id='topCounterSpan2'></span></a>
@@ -61,6 +63,7 @@
                 <a  href="#" onclick="f_addTab('用户管理','user.jsp',true);"  class="easyui-linkbutton" data-options="plain:true"><img src="images/stateie.gif">&nbsp;用户管理</a>
             </c:if>
             <a href="javascript:void(0)" class="easyui-menubutton" data-options="menu:'#topMenuDiv',iconCls:'icon-tip',plain:true" >工具</a>
+
         </div>
 
 
@@ -132,9 +135,9 @@ function f_openUserWindow(){
 
     $("#userWindow").window(
             {
-                title:'用户管理',
+                title:'修改个人资料',
                 width:400,
-                height:300,
+                height:280,
                 modal:true,
                 minimizable:false,
                 maximizable:false,

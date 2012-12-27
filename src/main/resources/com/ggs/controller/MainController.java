@@ -177,7 +177,8 @@ public class MainController extends BaseController {
      * */
     @RequestMapping("/main/updatePwd")
     public void updatePwd(HttpSession session,String password){
-        noteDao.updatePwd((String)session.getAttribute("admin"), password);
+        UserModel user = (UserModel)session.getAttribute("adminModel");
+        noteDao.updatePwd(user.getUserid(), password);
     }
 
 

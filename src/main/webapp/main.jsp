@@ -339,11 +339,6 @@
                         <a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_getArticles({creattime1:'<%=DateUtil.getDate("yyyy-MM-dd")%>'});return false;" title="今天笔记">今天（<span style="color: red;" id="myStatusSpan14"></span>）</a>
                     </div>
                     <hr/>
-                    <div>      <a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_myNote();return false;" title="我撰写的所有笔记">我的笔记（<span id="myStatusSpan13" style="color: red;"></span>）</a> </div>
-                        <div><a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_noReadNote();return false;" title="我未读的笔记">我未读的笔记（<span style="color: red;"  id="myStatusSpan16"></span>） </a> </div>
-                            <div> <a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_getCommentList();return false;" title="评论我的笔记">评论我的笔记（<span style="color: red;"  id="myStatusSpan17"></span>）</a>  </div>
-                                <div><a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_getMyCommentList();return false;" title="我评论的笔记">我评论的笔记（<span style="color: red;"  id="myStatusSpan18"></span>） </a></div>
-                    <hr/>
                     <div>
                         <a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_getMyStatusArticle(0);return false;" title='指派给我或待确认完成的事项'>我待处理事项（<span style="color: red;"  id="myStatusSpan10"></span>）</a>
                     </div>
@@ -353,6 +348,12 @@
                     <div>
                         <a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_getMyStatusArticle(1);return false;" title='指派给我已处理完毕的事项'>我已处理事项（<span style="color: red;" id="myStatusSpan11"></span>）</a>
                     </div>
+                    <hr/>
+                    <div>      <a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_myNote();return false;" title="我撰写的所有笔记">我的笔记（<span id="myStatusSpan13" style="color: red;"></span>）</a> </div>
+                        <div><a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_noReadNote();return false;" title="我未读的笔记">我未读的笔记（<span style="color: red;"  id="myStatusSpan16"></span>） </a> </div>
+                            <div> <a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_getCommentList();return false;" title="评论我的笔记">评论我的笔记（<span style="color: red;"  id="myStatusSpan17"></span>）</a>  </div>
+                                <div><a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_getMyCommentList();return false;" title="我评论的笔记">我评论的笔记（<span style="color: red;"  id="myStatusSpan18"></span>） </a></div>
+
                     <hr/>
                     <div><a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_getFolderArticles(62,'规范');return false;">常用规范</a>
                         <a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_getFolderArticles(111,'考勤');return false;">考勤记录</a>
