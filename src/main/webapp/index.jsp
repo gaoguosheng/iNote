@@ -9,7 +9,7 @@
 --%>
 <%@ page pageEncoding="UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="topSelected" value="4"></c:set>
+<c:set var="isCheckLogin" value="1"></c:set>
 <html>
 <head>
 <title><%=Config.SOFT_NAME%></title>
@@ -37,7 +37,7 @@
                         <a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_showOnlineDialog();return false;">在线人员（<span style="color: red;" id="onlineCountSpan"></span>）</a>&nbsp;
                         <c:choose>
                             <c:when test="${sessionScope.adminModel!=null}">
-                                <a href="#" class="easyui-linkbutton" data-options="plain:true">
+                                <a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_openUserWindow();" title="个人资料">
                                     <span id="topGradeSpan"></span>
                                 </a>&nbsp;
                                 <a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_showPwdDialog();;return false;" >修改密码</a>&nbsp;
@@ -57,7 +57,7 @@
             <a id="ganttLink"  href="#" onclick="f_addTab('工作进程','gantt_list.jsp',true);"  class="easyui-linkbutton" data-options="plain:true"><img src="images/issue.png"width="16" height="16"> 工作进程<span id='topCounterSpan2'></span></a>
             <a id="bugLink" href="#" onclick="f_addTab('问题反馈','bug.jsp',true);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-help'">问题反馈<span id='topCounterSpan3'></span></a>
             <a id="addrLink" href="#" onclick="f_addTab('通讯录','addr.jsp',true);"  class="easyui-linkbutton" data-options="plain:true"><img src="images/stateie.gif">&nbsp;通讯录</a>
-            <c:if test="${sessionScope.adminModel.username=='ggs'}">
+            <c:if test="${sessionScope.adminModel.username=='admin'}">
                 <a  href="#" onclick="f_addTab('用户管理','user.jsp',true);"  class="easyui-linkbutton" data-options="plain:true"><img src="images/stateie.gif">&nbsp;用户管理</a>
             </c:if>
             <a href="javascript:void(0)" class="easyui-menubutton" data-options="menu:'#topMenuDiv',iconCls:'icon-tip',plain:true" >工具</a>
@@ -88,7 +88,78 @@
 <div id="passwordDiv"></div>
 <div id="topCounterDiv"></div>
 
+<div id="userWindow" style="display: none">
+    <input type="hidden" id="userid" name="userid">
+    <table width="100%" align="center" border="0" cellpadding="5" class="normalFont">
+        <tr>
+            <td align="right" valign="top">用户名：</td>
+            <td><input name="username" id="username" placeholder="" readonly="" value="" type="text" style="width: 200px;"/></td>
+        </tr>
+        <tr>
+            <td align="right" valign="top">姓名：</td>
+            <td><input name="realname" id="realname" placeholder="" value="" type="text" style="width: 200px;"/></td>
+        </tr>
+        <tr>
+            <td align="right" valign="top">手机：</td>
+            <td><input name="mobile" id="mobile" placeholder="" value="" type="tel" style="width: 200px;"/></td>
+        </tr>
+        <tr>
+            <td align="right" valign="top">QQ：</td>
+            <td><input name="qq" id="qq" placeholder="" value="" type="tel" style="width: 200px;"/></td>
+        </tr>
+        <tr>
+            <td align="center" valign="top" colspan="2">
+                <a id="okBugBtn" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" onclick="return  f_saveUser();">保存</a>
+                <a id="closeBugBtn" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" onclick="$('#userWindow').window('close');">关闭</a>
+            </td>
+        </tr>
+    </table>
+
 <script type="text/javascript">
+
+/**
+ * 弹出窗口
+ * */
+function f_openUserWindow(){
+    $("#userWindow").css("display","block");
+
+    $("#username").val("${sessionScope.adminModel.username}");
+    $("#mobile").val("${sessionScope.adminModel.mobile}");
+    $("#realname").val("${sessionScope.adminModel.realname}");
+    $("#qq").val("${sessionScope.adminModel.qq}");
+    $("#userid").val("${sessionScope.adminModel.userid}");
+
+
+    $("#userWindow").window(
+            {
+                title:'用户管理',
+                width:400,
+                height:300,
+                modal:true,
+                minimizable:false,
+                maximizable:false,
+                collapsible:false
+            }
+    );
+}
+
+    //保存
+    function f_saveUser(){
+        if($("#username").val()==""){
+            f_alertError("您还未填写姓名！");
+            return false;
+        }
+        $GGS.ajax("user/saveUser<%=Config.EXT%>",{
+            username:$("#username").val(),
+            mobile:$("#mobile").val(),
+            qq:$("#qq").val(),
+            realname:$("#realname").val(),
+            userid:$("#userid").val()});
+        f_alertInfo("保存成功！");
+        $('#userWindow').window('close');
+
+    }
+
     /**
      * 弹出在线人员对话框
      * */

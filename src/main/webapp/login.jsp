@@ -61,10 +61,13 @@
     </script>
 </head>
 <body>
-<div id="dlg" class="easyui-dialog" title="用户登录" resizable="false" draggable="false" closable="false" data-options="iconCls:'icon-user'" style="width:580px;height:320px;padding:10px">
-    <div align="center" style="font-size: 24pt;font-weight: bold;padding: 10px;"><%=Config.SOFT_NAME%></div>
+<div id="dlg" class="easyui-dialog" title="用户登录" resizable="false" draggable="false" closable="false" data-options="iconCls:'icon-user'" style="width:580px;height:330px;padding:10px">
+    <div align="center" style="font-size: 20pt;font-weight: bold;"><%=Config.SOFT_NAME%></div>
     <form id="loginForm">
         <table align="center" width="100%" border="0"  cellpadding="5" class="normalFont">
+            <tr>
+                <td colspan="3" align="right" style="font-size: 10pt;color: red;">支持手机、QQ号码快捷登录</td>
+            </tr>
             <tr>
                 <td rowspan="3" align="center"><img src="images/logo-m.jpg"></td>
                 <td align="right">用户：</td>

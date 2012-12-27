@@ -178,16 +178,29 @@
 </head>
 <body>
 
-    <div align="center" class="normalFont">
-        <span class="titleFont">${item.title}</span><br/>
-            ${item.realname}&nbsp;&nbsp;${item.creattime}&nbsp;&nbsp;阅读（<span style="color: red;">${item.views}</span>）
+    <table cellpadding="5" border="0" cellspacing="0" style="width:100%" align="center" class="normalFont">
+        <tr>
+            <td valign="top" width="48px">
+                <a href="<%=Config.INDEX_PAGE%>"><img src="images/logo.jpg" border="0"/></a>
+            </td>
+            <td valign="middle" width="120px" >
+                <span style="font-size: 18pt;font-weight: bold;"><%=Config.SOFT_NAME%></span>
+            </td>
+            <td>
+                <div align="center" class="normalFont">
+                    <span class="titleFont">${item.title}</span><br/>
+                    ${item.realname}&nbsp;&nbsp;${item.creattime}&nbsp;&nbsp;阅读（<span style="color: red;">${item.views}</span>）
 
-        <a href="#" onclick="f_getCommentList();">评论（<span id="commentCountSpan" style="color: red;" ></span>） </a>
-        <c:if test="${sessionScope.adminModel!=null}">
+                    <a href="#" onclick="f_getCommentList();">评论（<span id="commentCountSpan" style="color: red;" ></span>） </a>
+                    <c:if test="${sessionScope.adminModel!=null}">
+                        <a href="#"  onclick="f_addComment();return false;">点评</a>
+                    </c:if>
+                </div>
+            </td>
+            <td width="168px">&nbsp;</td>
+        </tr>
+    </table>
 
-            <a href="#"  onclick="f_addComment();return false;" >我要点评</a>
-        </c:if>
-    </div>
 
     <div class="normalFont">
         <div id="contentDiv">${item.content}</div>

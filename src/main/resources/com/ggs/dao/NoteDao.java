@@ -178,7 +178,14 @@ public class NoteDao {
      * 检查登陆
      * */
     public boolean checkLogin(String username,String password){
-       int counter =this.sqLiteUtil.queryForInt("select count(*) from t_user where flag=1 and username=? and password=?",new Object[]{
+        StringBuilder sql = new StringBuilder();
+        sql.append(" select count(*) from t_user where flag=1 ");
+        sql.append(" and ((username=? and password=?) ");
+        sql.append(" or (mobile=? and password=?)");
+        sql.append(" or (qq=? and password=?))");
+       int counter =this.sqLiteUtil.queryForInt(sql.toString(),new Object[]{
+               username,password,
+               username,password,
                username,password
        });
        return counter>0?true:false;
@@ -188,8 +195,8 @@ public class NoteDao {
      * 检查登陆
      * */
     public boolean checkLoginFlag(String username){
-        int counter =this.sqLiteUtil.queryForInt("select count(*) from t_user where flag=1 and username=?",new Object[]{
-                username
+        int counter =this.sqLiteUtil.queryForInt("select count(*) from t_user where flag=1 and (username=? or mobile=? or qq=?)",new Object[]{
+                username ,username,username
         });
         return counter>0?true:false;
     }
@@ -317,13 +324,15 @@ public class NoteDao {
     * */
     public UserModel getUserModel(String username){
         UserModel model = new UserModel();
-        Map<String,String> map = this.sqLiteUtil.queryForMap("select * from t_user where username=?",new Object[]{username});
+        Map<String,String> map = this.sqLiteUtil.queryForMap("select * from t_user where (username=? or mobile=? or qq=?)",new Object[]{username,username,username});
         model.setUserid(map.get("id"));
         model.setRealname(map.get("realname"));
         model.setUsername(map.get("username"));
         model.setPassword(map.get("password"));
         model.setFlag(map.get("flag"));
         model.setOnlinetimes(map.get("onlinetimes"));
+        model.setMobile(map.get("mobile"));
+        model.setQq(map.get("qq"));
         return model;
     }
 

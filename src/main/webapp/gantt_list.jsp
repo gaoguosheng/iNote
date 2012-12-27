@@ -247,9 +247,9 @@ function f_getUsers(){
  * 打开编辑窗口
  * */
 function f_openGanttDialog(proid){
-    $("#startEndDateBody").css("display","block");
+    $("#startEndDateBody").css("display","");
     $("#startEndDateSpanBody").css("display","none");
-    $("#ganttWindow").css("display","block");
+    $("#ganttWindow").css("display","");
     $("#okBtn").css("display","");
     $("#delBtn").css("display","");
 
@@ -323,7 +323,7 @@ function f_openGanttDialog(proid){
            $("#cname").attr("disabled","disabled");
            $("#userid").attr("disabled","disabled");
            $("#startEndDateBody").css("display","none");
-           $("#startEndDateSpanBody").css("display","block");
+           $("#startEndDateSpanBody").css("display","");
            $("#prjid").attr("disabled","disabled");
            $("#priority").attr("disabled","disabled");
            $("#difficulty").attr("disabled","disabled");
@@ -373,7 +373,7 @@ function f_closeGanttWindow(){
  * */
 function f_saveProgress(){
     if($("#cname").val()==""){
-        f_alertError("进程名称不能为空！");
+        f_alertError("工作进程名称不能为空！");
         return false;
     }
 
@@ -385,6 +385,14 @@ function f_saveProgress(){
     if($("#pc").val()==100 && $("#realdate").datebox('getValue')==""){
         f_alertError("进度为100时，完成日期不能为空！");
         return false;
+    }
+
+    if($("#proid").val()){
+        if($("#memo").val()==""){
+            f_alertError("工作进展情况不能为空！");
+            return false;
+        }
+
     }
 
 
@@ -534,30 +542,24 @@ $(function(){
                 </select>
             </td>
         </tr>
-        <tbody id="startEndDateBody">
-        <tr>
+
+        <tr id="startEndDateBody">
             <td align="right" valign="top">计划起始日期</td>
-            <td>
-                <input id="startdate" class="easyui-datebox" data-options="formatter:myformatter">
-                </td>
+            <td><input id="startdate" class="easyui-datebox" data-options="formatter:myformatter"></td>
             <td align="right" valign="top">计划结束日期</td>
-            <td>
-                <input id="enddate" class="easyui-datebox" data-options="formatter:myformatter"></td>
+            <td><input id="enddate" class="easyui-datebox" data-options="formatter:myformatter"></td>
         </tr>
-        </tbody>
-        <tbody id="startEndDateSpanBody">
-        <tr>
+
+
+        <tr  id="startEndDateSpanBody">
             <td align="right" valign="top">计划起始日期</td>
-            <td>
-                <span id="startdateSpan"></span>
-            </td>
+            <td><span id="startdateSpan"></span></td>
             <td align="right" valign="top">计划结束日期</td>
-            <td>
-                <span id="enddateSpan"></span></td>
+            <td><span id="enddateSpan"></span></td>
         </tr>
-        </tbody>
-        <tbody id="optionalBody">
-            <tr>
+
+
+            <tr id="optionalBody">
                 <td align="right" valign="top">完成百份比</td>
                 <td>
                     <select id="pc">
@@ -571,9 +573,9 @@ $(function(){
                     <input id="realdate" class="easyui-datebox" data-options="formatter:myformatter">
                     </td>
             </tr>
-        </tbody>
+
         <tr>
-            <td align="right" valign="top">备注：</td>
+            <td align="right" valign="top">工作进展情况</td>
             <td colspan="3"><textarea rows="10" cols="60" id="memo"></textarea></td>
         </tr>
         <c:if test="${sessionScope.adminModel!=null}">

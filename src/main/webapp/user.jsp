@@ -254,7 +254,6 @@ $(function(){
                 <a id="closeBugBtn" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" onclick="$('#userWindow').window('close');">关闭</a>
             </td>
         </tr>
-
     </table>
 </div>
 </body>
