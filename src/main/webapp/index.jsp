@@ -52,7 +52,7 @@
                 </td>
             </tr>
         </table>
-        <div style="padding:5px;border:1px solid #ddd">
+        <div style="padding:5px;border:1px solid #ddd;background-color: #F8F8F8">
 
             <a id="homeLink"  href="#" onclick="f_addTab('首页','main.jsp',false);" class="easyui-linkbutton" data-options="plain:true"><img src="images/home.png"> 首页<span id='topCounterSpan1'></span></a>
             <a id="editorLink"   href="#" onclick="f_addTab('撰写笔记','editor.jsp',true);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-edit'">撰写笔记</a>

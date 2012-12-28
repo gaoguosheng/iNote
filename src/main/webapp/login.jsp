@@ -31,11 +31,11 @@
             pwd=hex_md5(pwd);
             var json = $GGS.getJSON("login<%=Config.EXT%>",{username:uname,password:pwd});
             if(json.flag=="-1"){
-                f_alertError("对不起，您的账号已停用！");
+                f_alertError("对不起，您的账号不存在或已停用！");
                 return false;
             }
             if(json.flag=="0"){
-                f_alertError("对不起，用户名或者密码不正确！");
+                f_alertError("对不起，用户名或密码不正确！");
                 return false;
             }
             //刷新首页
@@ -61,16 +61,13 @@
     </script>
 </head>
 <body>
-<div id="dlg" class="easyui-dialog" title="用户登录" resizable="false" draggable="false" closable="false" data-options="iconCls:'icon-user'" style="width:580px;height:330px;padding:10px">
+<div id="dlg" class="easyui-dialog" title="用户登录" resizable="false" draggable="false" closable="false" data-options="iconCls:'icon-user'" style="width:550px;height:300px;padding:10px">
     <div align="center" style="font-size: 20pt;font-weight: bold;"><%=Config.SOFT_NAME%></div>
     <form id="loginForm">
         <table align="center" width="100%" border="0"  cellpadding="5" class="normalFont">
             <tr>
-                <td colspan="3" align="right" style="font-size: 10pt;color: red;">支持手机、QQ号码快捷登录</td>
-            </tr>
-            <tr>
                 <td rowspan="3" align="center"><img src="images/logo-m.jpg"></td>
-                <td align="right">用户：</td>
+                <td align="right">用户/手机/QQ：</td>
                 <td><input type="text" name="username" id="username" class="text" style="width: 180px;" value="${cookie.username.value}"></td>
             </tr>
             <tr>
