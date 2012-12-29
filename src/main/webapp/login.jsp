@@ -63,11 +63,12 @@
 <body>
 <div id="dlg" class="easyui-dialog" title="用户登录" resizable="false" draggable="false" closable="false" data-options="iconCls:'icon-user'" style="width:550px;height:300px;padding:10px">
     <div align="center" style="font-size: 20pt;font-weight: bold;"><%=Config.SOFT_NAME%></div>
+    <br/>
     <form id="loginForm">
         <table align="center" width="100%" border="0"  cellpadding="5" class="normalFont">
             <tr>
                 <td rowspan="3" align="center"><img src="images/logo-m.jpg"></td>
-                <td align="right">用户/手机/QQ：</td>
+                <td align="right">账号/手机/QQ：</td>
                 <td><input type="text" name="username" id="username" class="text" style="width: 180px;" value="${cookie.username.value}"></td>
             </tr>
             <tr>

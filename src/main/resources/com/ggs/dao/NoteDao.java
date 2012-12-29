@@ -278,7 +278,7 @@ public class NoteDao {
      * 获取用户列表
      * */
     public List getUsers(){
-       return this.sqLiteUtil.queryForList("select * from t_user where flag=1 and username!='admin'");
+       return this.sqLiteUtil.queryForList("select * from t_user where flag=1 and username!='admin' order by username");
     }
 
     /**
@@ -644,6 +644,55 @@ public class NoteDao {
         //未解决反馈问题
         sql.append(" select 3 status,count(*) counter from t_bug where status=0");
         return this.sqLiteUtil.queryForList(sql.toString());
+    }
+
+    /**
+     * 获取用户进度
+     * */
+    public List getUserProgress(){
+        return this.sqLiteUtil.queryForList("select * from v_user_progress");
+    }
+
+    /**
+     * 获取Bug
+     * */
+    public List getBugs(){
+        return this.sqLiteUtil.queryForList("select * from v_bug");
+    }
+
+    /**
+     * 获取用户Bug明细
+     * */
+    public List getUserBug(){
+        return this.sqLiteUtil.queryForList("select * from v_user_bug");
+    }
+
+    /**
+     * 获取用户Bug明细解决情况
+     * */
+    public List getUserAssign(){
+        return this.sqLiteUtil.queryForList("select * from v_bug_assign");
+    }
+
+    /**
+     * 获取周计划提交情况
+     * */
+    public List getWeekSumm(){
+        return this.sqLiteUtil.queryForList("select * from v_weeksumm");
+    }
+
+    /**
+     * 获取学习会组织情况
+     * */
+    public List getLearnMeet(){
+        return this.sqLiteUtil.queryForList("select * from v_learnmeet");
+    }
+
+    /**
+     * 获取拜访报告提交情况
+     * */
+    public List getVisitReport(){
+        return this.sqLiteUtil.queryForList("select * from v_visitreport");
     }
 
    }

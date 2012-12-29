@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.*;
 
@@ -357,6 +358,75 @@ public class MainController extends BaseController {
         this.noteDao.updateCsort(folderids,csort);
     }
 
+    /**
+     * 工作绩效-工作进度情况
+     * */
+    @RequestMapping("/main/getUserProgress")
+    @ResponseBody
+    public Object getUserProgress(){
+        List itemList = this.noteDao.getUserProgress();
+        return  toJson(itemList);
+    }
+
+    /**
+     * 工作绩效-BUG情况
+     * */
+    @RequestMapping("/main/getBugs")
+    @ResponseBody
+    public Object getBugs(){
+        List itemList = this.noteDao.getBugs();
+        return  toJson(itemList);
+    }
+
+    /**
+     * 工作绩效-BUG明细情况
+     * */
+    @RequestMapping("/main/getUserBug")
+    @ResponseBody
+    public Object getUserBug(){
+        List itemList = this.noteDao.getUserBug();
+        return  toJson(itemList);
+    }
+
+    /**
+     * 工作绩效-BUG解决情况
+     * */
+    @RequestMapping("/main/getUserAssign")
+    @ResponseBody
+    public Object getUserAssign(){
+        List itemList = this.noteDao.getUserAssign();
+        return  toJson(itemList);
+    }
+
+    /**
+     * 工作绩效-周总结提交情况
+     * */
+    @RequestMapping("/main/getWeekSumm")
+    @ResponseBody
+    public Object getWeekSumm(){
+        List itemList = this.noteDao.getWeekSumm();
+        return  toJson(itemList);
+    }
+
+    /**
+     * 工作绩效-学习会组织情况
+     * */
+    @RequestMapping("/main/getLearnMeet")
+    @ResponseBody
+    public Object getLearnMeet(){
+        List itemList = this.noteDao.getLearnMeet();
+        return  toJson(itemList);
+    }
+
+    /**
+     * 工作绩效-拜访报告情况
+     * */
+    @RequestMapping("/main/getVisitReport")
+    @ResponseBody
+    public Object getVisitReport(){
+        List itemList = this.noteDao.getVisitReport();
+        return  toJson(itemList);
+    }
 
     /**
      * 截取字符串
@@ -399,4 +469,6 @@ public class MainController extends BaseController {
             }
         }
     }
+
+
 }
