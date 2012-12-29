@@ -26,8 +26,7 @@ public class Config {
 
 
 
-    //超级管理员
-    public final static String SUPER_ADMIN="ggs";
+
     //首页
     public final static String INDEX_PAGE="index.jsp";
     //后缀

@@ -26,7 +26,7 @@ public class ContextListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
         final  String filename = servletContextEvent.getServletContext().getRealPath("images/logo.jpg");
-        final List<Map<String,String>> userList =  sqLiteUtil.queryForList("select * from t_user");
+        final List<Map<String,String>> userList =  sqLiteUtil.queryForList("select * from t_user where flag=1 and username!='admin'");
         timer=new Timer();
         timer.schedule(new TimerTask() {
             @Override

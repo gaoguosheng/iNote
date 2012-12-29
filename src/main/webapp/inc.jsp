@@ -196,18 +196,18 @@
      * 用户在线等级
      * */
      var onlinetimes=[
-        {grade:1,miniute:2400,img:"<img src='images/grades/star.gif'>"},
-        {grade:2,miniute:4800,img:"<img src='images/grades/star.gif'><img src='images/grades/star.gif'>"},
-        {grade:3,miniute:9600,img:"<img src='images/grades/star.gif'><img src='images/grades/star.gif'><img src='images/grades/star.gif'>"},
-        {grade:4,miniute:19200,img:"<img src='images/grades/moon.gif'>"},
-        {grade:5,miniute:38400,img:"<img src='images/grades/moon.gif'><img src='images/grades/star.gif'>"},
-        {grade:6,miniute:76800,img:"<img src='images/grades/moon.gif'><img src='images/grades/star.gif'><img src='images/grades/star.gif'>"},
-        {grade:7,miniute:153600,img:"<img src='images/grades/moon.gif'><img src='images/grades/star.gif'><img src='images/grades/star.gif'><img src='images/grades/star.gif'>"},
-        {grade:8,miniute:307200,img:"<img src='images/grades/moon.gif'><img src='images/grades/moon.gif'>"},
-        {grade:9,miniute:614400,img:"<img src='images/grades/moon.gif'><img src='images/grades/moon.gif'><img src='images/grades/star.gif'>"},
-        {grade:10,miniute:1228800,img:"<img src='images/grades/moon.gif'><img src='images/grades/moon.gif'><img src='images/grades/star.gif'><img src='images/grades/star.gif'>"},
-        {grade:11,miniute:2457600,img:"<img src='images/grades/moon.gif'><img src='images/grades/moon.gif'><img src='images/grades/star.gif'><img src='images/grades/star.gif'><img src='images/grades/star.gif'>"},
-        {grade:12,miniute:4915200,img:"<img src='images/grades/sun.gif'>"}
+        {grade:1,miniute:2400,img:"<img src='images/grades/star.gif' boder='0'>"},
+        {grade:2,miniute:4800,img:"<img src='images/grades/star.gif' boder='0'><img src='images/grades/star.gif' boder='0'>"},
+        {grade:3,miniute:9600,img:"<img src='images/grades/star.gif' boder='0'><img src='images/grades/star.gif' boder='0'><img src='images/grades/star.gif' boder='0'>"},
+        {grade:4,miniute:19200,img:"<img src='images/grades/moon.gif' boder='0'>"},
+        {grade:5,miniute:38400,img:"<img src='images/grades/moon.gif' boder='0'><img src='images/grades/star.gif' boder='0'>"},
+        {grade:6,miniute:76800,img:"<img src='images/grades/moon.gif' boder='0'><img src='images/grades/star.gif' boder='0'><img src='images/grades/star.gif' boder='0'>"},
+        {grade:7,miniute:153600,img:"<img src='images/grades/moon.gif' boder='0'><img src='images/grades/star.gif' boder='0'><img src='images/grades/star.gif' boder='0'><img src='images/grades/star.gif' boder='0'>"},
+        {grade:8,miniute:307200,img:"<img src='images/grades/moon.gif' boder='0'><img src='images/grades/moon.gif' boder='0'>"},
+        {grade:9,miniute:614400,img:"<img src='images/grades/moon.gif' boder='0'><img src='images/grades/moon.gif' boder='0'><img src='images/grades/star.gif' boder='0'>"},
+        {grade:10,miniute:1228800,img:"<img src='images/grades/moon.gif' boder='0'><img src='images/grades/moon.gif' boder='0'><img src='images/grades/star.gif' boder='0'><img src='images/grades/star.gif' boder='0'>"},
+        {grade:11,miniute:2457600,img:"<img src='images/grades/moon.gif' boder='0'><img src='images/grades/moon.gif' boder='0'><img src='images/grades/star.gif' boder='0'><img src='images/grades/star.gif' boder='0'><img src='images/grades/star.gif' boder='0'>"},
+        {grade:12,miniute:4915200,img:"<img src='images/grades/sun.gif' boder='0'>"}
     ];
 
 

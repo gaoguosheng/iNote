@@ -409,20 +409,22 @@
     <div id="tb" style="padding: 5px;">
         <a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-reload'" onclick="f_refreshGrid();" >刷新</a>
         <a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-ok'" onclick="f_updateReadAllFlag();return false;" title="全部置为已读">全部置为已读</a>
-                   <span>
+        <a href="#"  class="easyui-menubutton" data-options="menu:'#OtherUserDiv'" title="按人员查询">人员</a>
+        <a href="#"  class="easyui-menubutton" data-options="menu:'#statusDiv'" title="按处理状态查询">状态</a>
+        <span>
                        <input class="easyui-searchbox" data-options="prompt:'请输入关键字',menu:'#mm',
-			searcher:function(value,name){if (name==1){f_getArticles({title:value});}else{f_getArticles({content:value});} }" style="width:250px"/>
+			searcher:function(value,name){if (name==1){f_getArticles({title:value});}else{f_getArticles({content:value});} }" style="width:200px"/>
                         <div id="mm" style="width:120px">
                             <div data-options="name:'1'">标题</div>
                             <div data-options="name:'2'">内容</div>
                         </div>
+
                        日期：
-                       <input id="creattime1" class="easyui-datebox" data-options="formatter:myformatter">
+                       <input id="creattime1" class="easyui-datebox" data-options="formatter:myformatter" >
                        -
                        <input id="creattime2" class="easyui-datebox" data-options="formatter:myformatter" >
                        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true" title="检索笔记" onclick="f_query();" >检索</a>
-                       <%-- <a href="#"  class="easyui-menubutton" data-options="menu:'#statusDiv'" title="按处理状态查询">状态</a>
-                       <a href="#"  class="easyui-menubutton" data-options="menu:'#OtherUserDiv'" title="按人员查询">人员</a>--%>
+
 
                    </span>
     </div>

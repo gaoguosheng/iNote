@@ -1,5 +1,6 @@
 package com.ggs.dao;
 
+import com.ggs.comm.Config;
 import com.ggs.model.*;
 import com.ggs.util.DateUtil;
 import com.ggs.util.NullUtil;
@@ -277,7 +278,7 @@ public class NoteDao {
      * 获取用户列表
      * */
     public List getUsers(){
-       return this.sqLiteUtil.queryForList("select * from t_user where flag=1");
+       return this.sqLiteUtil.queryForList("select * from t_user where flag=1 and username!='admin'");
     }
 
     /**

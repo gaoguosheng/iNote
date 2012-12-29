@@ -54,13 +54,13 @@
         </table>
         <div style="padding:5px;border:1px solid #ddd;background-color: #F8F8F8">
 
-            <a id="homeLink"  href="#" onclick="f_addTab('首页','main.jsp',false);" class="easyui-linkbutton" data-options="plain:true"><img src="images/home.png"> 首页<span id='topCounterSpan1'></span></a>
+            <a id="homeLink"  href="#" onclick="f_addTab('首页','main.jsp',false);" class="easyui-linkbutton" data-options="plain:true"><img src="images/home.png" border="0"> 首页<span id='topCounterSpan1'></span></a>
             <a id="editorLink"   href="#" onclick="f_addTab('撰写笔记','editor.jsp',true);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-edit'">撰写笔记</a>
-            <a id="ganttLink"  href="#" onclick="f_addTab('工作进程','gantt_list.jsp',true);"  class="easyui-linkbutton" data-options="plain:true"><img src="images/issue.png"width="16" height="16"> 工作进程<span id='topCounterSpan2'></span></a>
+            <a id="ganttLink"  href="#" onclick="f_addTab('工作进程','gantt_list.jsp',true);"  class="easyui-linkbutton" data-options="plain:true"><img src="images/issue.png"width="16" height="16" border="0"> 工作进程<span id='topCounterSpan2'></span></a>
             <a id="bugLink" href="#" onclick="f_addTab('问题反馈','bug.jsp',true);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-help'">问题反馈<span id='topCounterSpan3'></span></a>
-            <a id="addrLink" href="#" onclick="f_addTab('通讯录','addr.jsp',true);"  class="easyui-linkbutton" data-options="plain:true"><img src="images/stateie.gif">&nbsp;通讯录</a>
+            <a id="addrLink" href="#" onclick="f_addTab('通讯录','addr.jsp',true);"  class="easyui-linkbutton" data-options="plain:true"><img src="images/stateie.gif" border="0">&nbsp;通讯录</a>
             <c:if test="${sessionScope.adminModel.username=='admin'}">
-                <a  href="#" onclick="f_addTab('用户管理','user.jsp',true);"  class="easyui-linkbutton" data-options="plain:true"><img src="images/stateie.gif">&nbsp;用户管理</a>
+                <a  href="#" onclick="f_addTab('用户管理','user.jsp',true);"  class="easyui-linkbutton" data-options="plain:true"><img src="images/stateie.gif" border="0">&nbsp;用户管理</a>
             </c:if>
             <a href="javascript:void(0)" class="easyui-menubutton" data-options="menu:'#topMenuDiv',iconCls:'icon-tip',plain:true" >工具</a>
 
