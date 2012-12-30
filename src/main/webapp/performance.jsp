@@ -24,13 +24,13 @@
                            data-options="singleSelect:true,collapsible:false,url:'main/getUserProgress<%=Config.EXT%>'">
                         <thead>
                         <tr>
-                            <th data-options="field:'yearmonth'">月份</th>
-                            <th data-options="field:'realname'">姓名</th>
-                            <th data-options="field:'counter'">任务数量</th>
-                            <th data-options="field:'delaynotfinishcount'">超时未完成数量</th>
-                            <th data-options="field:'delayfinishcount'">超时完成数量</th>
-                            <th data-options="field:'leadcount'">超前完成数量</th>
-                            <th data-options="field:'percent',formatter:formatFinishPercent">完成百份比</th>
+                            <th data-options="field:'yearmonth',width:80">月份</th>
+                            <th data-options="field:'realname',width:80">姓名</th>
+                            <th data-options="field:'counter',width:80">任务数量</th>
+                            <th data-options="field:'leadcount',width:80">超前完成</th>
+                            <th data-options="field:'delaynotfinishcount',width:80">超时未完成</th>
+                            <th data-options="field:'delayfinishcount',width:80">超时完成</th>
+                            <th data-options="field:'percent',formatter:formatFinishPercent,width:80">完成百份比</th>
                         </tr>
                         </thead>
                     </table>
@@ -38,9 +38,9 @@
                            data-options="singleSelect:true,collapsible:false,url:'main/getVisitReport<%=Config.EXT%>'">
                         <thead>
                         <tr>
-                            <th data-options="field:'yearmonth'">月份</th>
-                            <th data-options="field:'realname'">姓名</th>
-                            <th data-options="field:'counter'">提交数量</th>
+                            <th data-options="field:'yearmonth',width:80">月份</th>
+                            <th data-options="field:'realname',width:80">姓名</th>
+                            <th data-options="field:'counter',width:80">提交数量</th>
                         </tr>
                         </thead>
                     </table>
@@ -49,9 +49,9 @@
                            data-options="singleSelect:true,collapsible:false,url:'main/getWeekSumm<%=Config.EXT%>'">
                         <thead>
                         <tr>
-                            <th data-options="field:'yearmonth'">月份</th>
-                            <th data-options="field:'realname'">姓名</th>
-                            <th data-options="field:'counter'">提交数量</th>
+                            <th data-options="field:'yearmonth',width:80">月份</th>
+                            <th data-options="field:'realname',width:80">姓名</th>
+                            <th data-options="field:'counter',width:80">提交数量</th>
                         </tr>
                         </thead>
                     </table>
@@ -60,9 +60,9 @@
                            data-options="singleSelect:true,collapsible:false,url:'main/getLearnMeet<%=Config.EXT%>'">
                         <thead>
                         <tr>
-                            <th data-options="field:'yearmonth'">月份</th>
-                            <th data-options="field:'realname'">姓名</th>
-                            <th data-options="field:'title'">学习会主题</th>
+                            <th data-options="field:'yearmonth',width:80">月份</th>
+                            <th data-options="field:'realname',width:80">姓名</th>
+                            <th data-options="field:'title',width:200">学习会主题</th>
                         </tr>
                         </thead>
                     </table>
@@ -76,37 +76,39 @@
                 <td width="50%" valign="top">
 
 
-                    <table class="easyui-datagrid" title="BUG提交情况" style="height:250px"
+                    <table class="easyui-datagrid" title="软件BUG提交情况" style="height:250px"
                            data-options="singleSelect:true,collapsible:false,url:'main/getBugs<%=Config.EXT%>'">
                         <thead>
                         <tr>
-                            <th data-options="field:'yearmonth'">月份</th>
-                            <th data-options="field:'realname'">姓名</th>
-                            <th data-options="field:'buglevel',formatter:formatBugLevel">BUG等级</th>
-                            <th data-options="field:'counter'">BUG数量</th>
-                            <th data-options="field:'finishcounter'">BUG确认完成数量</th>
+                            <th data-options="field:'yearmonth',width:80">月份</th>
+                            <th data-options="field:'realname',width:80">姓名</th>
+                            <th data-options="field:'buglevel',formatter:formatBugLevel,width:80">BUG等级</th>
+                            <th data-options="field:'counter',width:80">BUG数量</th>
+                            <th data-options="field:'noprocesscounter',width:80">未处理</th>
+                            <th data-options="field:'processcounter',formatter:formatProcesscounter,width:80">已处理</th>
+                            <th data-options="field:'finishcounter',width:80">已完成</th>
                         </tr>
                         </thead>
                     </table>
-                    <table class="easyui-datagrid" title="BUG提交明细" style="height:500px"
+                    <table class="easyui-datagrid" title="人员BUG明细" style="height:500px"
                            data-options="singleSelect:true,collapsible:false,url:'main/getUserBug<%=Config.EXT%>'">
                         <thead>
                         <tr>
-                            <th data-options="field:'yearmonth'">月份</th>
-                            <th data-options="field:'assignname'">姓名</th>
-                            <th data-options="field:'buglevel',formatter:formatBugLevel">BUG等级</th>
-                            <th data-options="field:'counter'">BUG数量</th>
+                            <th data-options="field:'yearmonth',width:80">月份</th>
+                            <th data-options="field:'assignname',width:80">姓名</th>
+                            <th data-options="field:'buglevel',formatter:formatBugLevel,width:80">BUG等级</th>
+                            <th data-options="field:'counter',width:80">BUG数量</th>
                         </tr>
                         </thead>
                     </table>
-                    <table class="easyui-datagrid" title="BUG解决情况" style="height:250px"
+                    <table class="easyui-datagrid" title="软件BUG解决情况" style="height:250px"
                            data-options="singleSelect:true,collapsible:false,url:'main/getUserAssign<%=Config.EXT%>'">
                         <thead>
                         <tr>
-                            <th data-options="field:'yearmonth'">月份</th>
-                            <th data-options="field:'assignname'">姓名</th>
-                            <th data-options="field:'status',formatter:formatBugStatus">状态</th>
-                            <th data-options="field:'counter'">BUG数量</th>
+                            <th data-options="field:'yearmonth',width:80">月份</th>
+                            <th data-options="field:'assignname',width:80">姓名</th>
+                            <th data-options="field:'status',formatter:formatBugStatus,width:80">状态</th>
+                            <th data-options="field:'counter',width:80">BUG数量</th>
                         </tr>
                         </thead>
                     </table>
@@ -152,6 +154,11 @@
         }else{
             return row.percent;
         }
+    }
+
+    //计算已处理
+    function formatProcesscounter(val,row){
+        return row.counter-row.noprocesscounter-row.finishcounter;
     }
 
 </script>

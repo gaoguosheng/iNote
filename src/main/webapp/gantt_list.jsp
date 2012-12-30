@@ -75,18 +75,6 @@ function f_getArticles(){
                     }
                 }
             },
-            {field:'cname',title:'进程名称',width:250,
-                formatter:function(value,row,index){
-                    var title="";
-                    var color="";
-                    var curdate = "<%=DateUtil.getDate("yyyy-MM-dd")%>";
-                    if(curdate>=row.startdate && curdate<=row.enddate ){
-                        color="color:red;";
-                        title="当前进程（计划周期内的进程）";
-                    }
-                    return "<span style='"+color+"' title='"+title+"'>"+row.cname+"</span>";
-                }},
-            {field:'realname',title:'负责人',width:80 },
             {field:'difficulty',title:'难度',width:80,align:"center",
                 formatter:function(value,row,index){
                     if (row.difficulty==1){
@@ -102,8 +90,18 @@ function f_getArticles(){
                     }
                 }
             },
-            {field:'startdate',title:'计划起始日期',width:100,align:"center",sortable:true},
-            {field:'enddate',title:'计划完成日期',width:100,align:"center",sortable:true},
+            {field:'cname',title:'进程名称',width:250,
+                formatter:function(value,row,index){
+                    var title="";
+                    var color="";
+                    var curdate = "<%=DateUtil.getDate("yyyy-MM-dd")%>";
+                    if(curdate>=row.startdate && curdate<=row.enddate ){
+                        color="color:red;";
+                        title="当前进程（计划周期内的进程）";
+                    }
+                    return "<span style='"+color+"' title='"+title+"'>"+row.cname+"</span>";
+                }},
+            {field:'realname',title:'负责人',width:80 },
             {field:'pc',title:'完成进度',width:150, sortable:true,
                 formatter:function(value,row,index){
                     var str=" <div style=\"color:Silver;border-width:1px;border-style:Solid;width:140;\">";
@@ -119,6 +117,10 @@ function f_getArticles(){
                     return str;
                 }
             },
+
+            {field:'startdate',title:'计划起始日期',width:100,align:"center",sortable:true},
+            {field:'enddate',title:'计划完成日期',width:100,align:"center",sortable:true},
+
             {field:'realdate',title:'实际完成日期',width:100,align:"center",sortable:true},
             {field:'finishStatus',title:'完成情况',width:100,  align:"center",
                 formatter:function(value,row,index){
@@ -153,9 +155,7 @@ function f_getArticles(){
 
             }
 
-            } ,
-            {field:'creatname',title:'创建人',width:60},
-            {field:'creattime',title:'创建时间',width:100,align:"center",sortable:true}
+            }
 
         ]],
         toolbar:'#tb',
