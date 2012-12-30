@@ -84,7 +84,7 @@
                             <th data-options="field:'realname'">姓名</th>
                             <th data-options="field:'buglevel',formatter:formatBugLevel">BUG等级</th>
                             <th data-options="field:'counter'">BUG数量</th>
-                            <th data-options="field:'finishcounter'">BUG修复完成数量</th>
+                            <th data-options="field:'finishcounter'">BUG确认完成数量</th>
                         </tr>
                         </thead>
                     </table>

@@ -56,14 +56,14 @@
 
             <a id="homeLink"  href="#" onclick="f_addTab('首页','main.jsp',false);" class="easyui-linkbutton" data-options="plain:true"><img src="images/home.png"> 首页<span id='topCounterSpan1'></span></a>
             <a id="editorLink"   href="#" onclick="f_addTab('撰写笔记','editor.jsp',true);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-edit'">撰写笔记</a>
-            <a href="#" onclick="f_addTab('工作绩效','performance.jsp',true);" class="easyui-linkbutton" data-options="plain:true">工作绩效</a>
-            <a id="ganttLink"  href="#" onclick="f_addTab('工作进程','gantt_list.jsp',true);"  class="easyui-linkbutton" data-options="plain:true">工作进程<span id='topCounterSpan2'></span></a>
-            <a id="bugLink" href="#" onclick="f_addTab('问题反馈','bug.jsp',true);" class="easyui-linkbutton" data-options="plain:true">问题反馈<span id='topCounterSpan3'></span></a>
-            <a id="addrLink" href="#" onclick="f_addTab('通讯录','addr.jsp',true);"  class="easyui-linkbutton" data-options="plain:true">通讯录</a>
+            <a href="#" onclick="f_addTab('工作绩效','performance.jsp',true);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-node'">工作绩效</a>
+            <a id="ganttLink"  href="#" onclick="f_addTab('工作进程','gantt_list.jsp',true);"  class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-node'">工作进程<span id='topCounterSpan2'></span></a>
+            <a id="bugLink" href="#" onclick="f_addTab('问题反馈','bug.jsp',true);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-node'">问题反馈<span id='topCounterSpan3'></span></a>
+            <a id="addrLink" href="#" onclick="f_addTab('通讯录','addr.jsp',true);"  class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-node'">通讯录</a>
             <c:if test="${sessionScope.adminModel.username=='admin'}">
-                <a  href="#" onclick="f_addTab('用户管理','user.jsp',true);"  class="easyui-linkbutton" data-options="plain:true">用户管理</a>
+                <a  href="#" onclick="f_addTab('用户管理','user.jsp',true);"  class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-node'">用户管理</a>
             </c:if>
-            <a href="javascript:void(0)" class="easyui-menubutton" data-options="menu:'#topMenuDiv',plain:true,iconCls:'icon-tip'" >工具</a>
+            <a href="javascript:void(0)" class="easyui-menubutton" data-options="menu:'#topMenuDiv',plain:true,iconCls:'icon-tip'" >实用工具</a>
 
         </div>
 
