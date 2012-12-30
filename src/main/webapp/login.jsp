@@ -68,7 +68,7 @@
         <table align="center" width="100%" border="0"  cellpadding="5" class="normalFont">
             <tr>
                 <td rowspan="3" align="center"><img src="images/logo-m.jpg"></td>
-                <td align="right">账号/手机/QQ：</td>
+                <td align="right">帐号/手机/QQ：</td>
                 <td><input type="text" name="username" id="username" class="text" style="width: 180px;" value="${cookie.username.value}"></td>
             </tr>
             <tr>

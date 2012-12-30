@@ -278,7 +278,8 @@ function f_openGanttDialog(proid){
         $("#pc").val(json.pc);
         $("#prjid").val(json.prjid);
         $("#memo").val(json.memo);
-        $('#realdate').datebox('setValue',json.realdate);
+        $('#realdate').val(json.realdate);
+        $('#realdateSpan').html(json.realdate);
 
         $("#priority").val(json.priority);
         $("#difficulty").val(json.difficulty);
@@ -343,7 +344,7 @@ function f_openGanttDialog(proid){
         $("#proid").val("");
         $("#prjid").attr("selectedIndex","0");
         $("#memo").val("");
-        $('#realdate').datebox('setValue','');
+        $('#realdate').val("");
         $("#priority").attr("selectedIndex","0");
         $("#difficulty").attr("selectedIndex","0");
     }
@@ -377,24 +378,18 @@ function f_saveProgress(){
         return false;
     }
 
-    if($("#pc").val()<100 && $("#realdate").datebox('getValue')!=""){
-        f_alertError("进度小于100时，不能填写完成日期！");
-        return false;
-    }
-
-    if($("#pc").val()==100 && $("#realdate").datebox('getValue')==""){
-        f_alertError("进度为100时，完成日期不能为空！");
-        return false;
-    }
 
     if($("#proid").val()){
         if($("#memo").val()==""){
             f_alertError("工作进展情况不能为空！");
             return false;
         }
-
     }
 
+
+    if($("#pc").val()==100){
+        $("#realdate").val("<%=DateUtil.getDate("yyyy-MM-dd")%>");
+    }
 
     $GGS.ajax("progress/saveProgress<%=Config.EXT%>",{
         proid:$("#proid").val(),
@@ -405,7 +400,7 @@ function f_saveProgress(){
         pc:$("#pc").val(),
         memo:$("#memo").val(),
         prjid:$("#prjid").val(),
-        realdate:$('#realdate').datebox('getValue') ,
+        realdate:$('#realdate').val() ,
         priority:$("#priority").val(),
         difficulty:$("#difficulty").val()
     });
@@ -570,7 +565,8 @@ $(function(){
                 </td>
                 <td align="right" valign="top">实际完成日期</td>
                 <td>
-                    <input id="realdate" class="easyui-datebox" data-options="formatter:myformatter">
+                    <input id="realdate" type="hidden">
+                    <span id="realdateSpan"></span>
                     </td>
             </tr>
 
