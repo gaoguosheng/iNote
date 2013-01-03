@@ -353,7 +353,7 @@ function f_openGanttDialog(proid){
             {
                 title:'编辑进程',
                 width:700,
-                height:530,
+                height:450,
                 modal:true,
                 minimizable:false,
                 maximizable:false,
@@ -572,7 +572,7 @@ $(function(){
 
         <tr>
             <td align="right" valign="top">工作进展情况</td>
-            <td colspan="3"><textarea rows="10" cols="60" id="memo"></textarea></td>
+            <td colspan="3"><textarea rows="5" cols="60" id="memo"></textarea></td>
         </tr>
         <c:if test="${sessionScope.adminModel!=null}">
             <tr>

@@ -169,7 +169,7 @@
                     {
                         title:'联系人',
                         width:650,
-                        height:500,
+                        height:460,
                         modal:true,
                         minimizable:false,
                         maximizable:false,
@@ -409,7 +409,7 @@
             </tr>
             <tr>
                 <td valign="top" style="text-align: right">备注：</td>
-                <td><textarea class="easyui-validatebox" rows="8" cols="35" id="memo" name="memo" style="width:400px;"></textarea></td>
+                <td><textarea class="easyui-validatebox" rows="5" cols="35" id="memo" name="memo" style="width:400px;"></textarea></td>
             </tr>
             <tr>
                 <td valign="top" style="text-align: right">共享状态：</td>

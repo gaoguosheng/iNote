@@ -331,16 +331,20 @@
     <%@include file="top.jsp"%>
     <table border="0" cellpadding="0" cellspacing="0" width="100%" class="borderTable normalFont">
         <tr>
-            <td valign="top" width="200px">
+            <td valign="top" width="160px">
 
                 <div style="text-align: left;margin: 10px;">
                     <div>
+
                         <a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_allNote();return false;" title="全部笔记">全部（<span style="color: red;" id="myStatusSpan15"></span>）</a>
                         <a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_getArticles({creattime1:'<%=DateUtil.getDate("yyyy-MM-dd")%>'});return false;" title="今天笔记">今天（<span style="color: red;" id="myStatusSpan14"></span>）</a>
+
                     </div>
                     <hr/>
                     <div>      <a href="#" class="easyui-menubutton" data-options="menu:'#myNoteDiv',plain:true" onclick="f_myNote();return false;" title="我撰写的所有笔记">我的笔记（<span id="myStatusSpan13" style="color: red;"></span>）</a> </div>
-                  <hr/>
+                    <a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_updateReadAllFlag();return false;" title="全部置为已读">全部置为已读</a>
+
+                    <hr/>
                     <div>
                         <a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_getMyStatusArticle(0);return false;" title='指派给我或待确认完成的事项'>我待处理事项（<span style="color: red;"  id="myStatusSpan10"></span>）</a>
                     </div>
@@ -410,9 +414,8 @@
     </script>
     <div id="tb" style="padding: 5px;">
         <a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-reload'" onclick="f_refreshGrid();" >刷新</a>
-        <a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-ok'" onclick="f_updateReadAllFlag();return false;" title="全部置为已读">全部置为已读</a>
-        <a href="#"  class="easyui-menubutton" data-options="menu:'#OtherUserDiv'" title="按人员查询">人员</a>
         <a href="#"  class="easyui-menubutton" data-options="menu:'#statusDiv'" title="按处理状态查询">状态</a>
+        <a href="#"  class="easyui-menubutton" data-options="menu:'#OtherUserDiv'" title="按人员查询">人员</a>
         <span>
                        <input class="easyui-searchbox" data-options="prompt:'请输入关键字',menu:'#mm',
 			searcher:function(value,name){if (name==1){f_getArticles({title:value});}else{f_getArticles({content:value});} }" style="width:200px"/>
@@ -420,8 +423,7 @@
                             <div data-options="name:'1'">标题</div>
                             <div data-options="name:'2'">内容</div>
                         </div>
-
-                       日期：
+                       日期
                        <input id="creattime1" class="easyui-datebox" data-options="formatter:myformatter" >
                        -
                        <input id="creattime2" class="easyui-datebox" data-options="formatter:myformatter" >
@@ -429,6 +431,7 @@
 
 
                    </span>
+
     </div>
 <script type="text/javascript">
     function myformatter(date){

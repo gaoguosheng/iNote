@@ -133,7 +133,7 @@ function f_openProcessWindow(id){
             {
                 title:'问题反馈信息',
                 width:700,
-                height:550,
+                height:480,
                 modal:true,
                 minimizable:false,
                 maximizable:false,
@@ -297,7 +297,7 @@ $(function(){
         <tr>
             <th valign="top" align="right">处理信息：</th>
             <td>
-                <textarea rows="8" style="width: 98%" id="processinfo"></textarea>
+                <textarea rows="5" style="width: 98%" id="processinfo"></textarea>
             </td>
         </tr>
         <c:if test="${sessionScope.adminModel!=null}">
@@ -342,7 +342,7 @@ $(function(){
         </tr>
         <tr>
             <td align="right" valign="top">问题反馈：</td>
-            <td><textarea name="memo" id="memo" rows="8" placeholder="" style="width: 300px;"></textarea></td>
+            <td><textarea name="memo" id="memo" rows="5" placeholder="" style="width: 300px;"></textarea></td>
         </tr>
         <tr>
             <td align="right" valign="top"> 创建人：</td>
