@@ -155,6 +155,11 @@ function f_getArticles(){
 
             }
 
+            } ,
+            {field:'memo',title:'工作进展情况',width:300,
+                formatter:function(value,row,index){
+                    return "<div title='"+row.memo+"'>"+row.memo+"</div>";
+                }
             }
 
         ]],
@@ -381,7 +386,7 @@ function f_saveProgress(){
 
     if($("#proid").val()){
         if($("#memo").val()==""){
-            f_alertError("工作进展情况不能为空！");
+            f_alertError("工作进展情况不能为空！如下：<br/>12.4 需求整理及ER图设计<br/>12.5 创建数据库及软件工程");
             return false;
         }
     }
@@ -589,6 +594,7 @@ $(function(){
 
 
 <div id="tb">
+    <a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-reload'" onclick="f_refreshGrid();" >刷新</a>
     <c:if test="${sessionScope.adminModel!=null}">
         <a href='#' onclick='f_openGanttDialog(undefined);' class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">新增进程</a>
      </c:if>

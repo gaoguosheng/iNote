@@ -63,8 +63,20 @@
         if( json!=null ){
             //在线人数
             onlineCount=json.length;
+            var tb="<table width='100%' class='normalFont' style='text-align: center'>";
+            tb+="<tr>";
+            tb+="<th>状态</th>";
+            tb+="<th>帐号</th>";
+            tb+="<th>姓名</th>";
+            tb+="<th>等级</th>";
+            tb+="<th>在线时长</th>";
+            tb+="<th>剩余时长</th>";
+            tb+="<th>手机</th>";
+            tb+="<th>QQ</th>";
+            tb+="</tr>";
             var div=""
             for(var i=0;i<users.length;i++){
+                tb+="<tr>";
                 var times =users[i].onlinetimes;
                 //当前等级
                 var currgrade=1;
@@ -82,7 +94,7 @@
                 }
                 var gradestr=users[i].username+" "+users[i].realname+" <span title='在线"+currhour+"小时，还要"+remainhour+"小时升级' style='color:#ff8c00;font-weight: bold;'>"+currgrade+"级 "+img+"</span>";
                 if(users[i].id=="${sessionScope.adminModel.userid}") $("#topGradeSpan").html(gradestr);
-                div+="<div style='padding: 3px;'>";
+
 
                 //寻找在线人员
                 var isFound=false;
@@ -94,17 +106,23 @@
                 }
                 if(isFound){
                     //在线
-                    div+="<img src='images/stateie.gif' />";
+                    tb+= "<td><img src='images/stateie.gif' /></td>";
                 }else{
                     //离线
-                    div+="<img src='images/stateie2.gif' style='FILTER: gray;'/>";
+                    tb+="<td><img src='images/stateie2.gif' style='FILTER: gray;'/></td>";
                 }
-                div+=gradestr;
-                div+=" <img src='images/grades/times.png'>"+currhour+"小时";
-                div+=" <img src='images/grades/badtimes.png'>"+remainhour+"小时";
-                div+="</div> ";
+
+                tb+="<td>"+users[i].username+"</td>";
+                tb+="<td>"+users[i].realname+"</td>";
+                tb+="<td><span title='在线"+currhour+"小时，还要"+remainhour+"小时升级' style='color:#ff8c00;font-weight: bold;'>"+currgrade+"级 "+img+"</span></td>";
+                tb+=" <td><img src='images/grades/times.png'>"+currhour+"小时</td>";
+                tb+=" <td><img src='images/grades/badtimes.png'>"+remainhour+"小时</td>";
+                tb+=" <td>"+users[i].mobile+"</td>";
+                tb+=" <td>"+users[i].qq+"</td>";
+                tb+="</tr>";
             }
-            return div;
+            tb+="</table>";
+            return tb;
         }
     }
 

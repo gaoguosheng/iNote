@@ -253,8 +253,9 @@ $(function(){
     </tr>
 </table>
 <div id="tb">
-    <a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-add'" onclick="f_openBugWindow();">新增问题</a>
     <a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-reload'" onclick="f_refreshGrid();">刷新</a>
+    <a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-add'" onclick="f_openBugWindow();">新增问题</a>
+
     <input class="easyui-searchbox" data-options="prompt:'请输入关键字',menu:'#mm',
 			searcher:function(value,name){
 			if(name==0){f_getArticles({fspell:value});

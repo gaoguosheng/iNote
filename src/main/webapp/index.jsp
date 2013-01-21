@@ -171,8 +171,8 @@ function f_openUserWindow(){
         $("#userOnlinetimesDiv").html(f_getOnlineListDiv());
         $("#userOnlinetimesDiv").window({
             title:'在线人员',
-            width:350,
-            height:400,
+            width:700,
+            height:500,
             modal:true,
             minimizable:false,
             maximizable:false,
