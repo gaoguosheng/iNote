@@ -63,16 +63,16 @@
         if( json!=null ){
             //在线人数
             onlineCount=json.length;
-            var tb="<table width='100%' class='normalFont' style='text-align: center'>";
-            tb+="<tr>";
-            tb+="<th>状态</th>";
-            tb+="<th>帐号</th>";
-            tb+="<th>姓名</th>";
-            tb+="<th>等级</th>";
-            tb+="<th>在线时长</th>";
-            tb+="<th>剩余时长</th>";
-            tb+="<th>手机</th>";
-            tb+="<th>QQ</th>";
+            var tb="<table width='100%' class='normalFont' >";
+            tb+="<tr style='font-weight:bold'>";
+            tb+="<td>状态</td>";
+            tb+="<td>帐号</td>";
+            tb+="<td>姓名</td>";
+            tb+="<td>等级</td>";
+            tb+="<td>在线时长</td>";
+            tb+="<td>剩余时长</td>";
+            tb+="<td>手机</td>";
+            tb+="<td>QQ</td>";
             tb+="</tr>";
             var div=""
             for(var i=0;i<users.length;i++){

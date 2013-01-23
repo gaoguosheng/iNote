@@ -664,34 +664,43 @@
         <div onclick="f_createArticle();">空白</div>
         <div class="menu-sep"></div>
         <div>
-            <span>日常</span>
+            <span>日常工作</span>
             <div style="width: 150px;">
-                <div onclick="if(f_createArticle())f_getArticleTemplate(87,'<%=new SimpleDateFormat("yyyy.MM").format(new Date())%>月工作计划');">月工作计划</div>
-                <div onclick="if(f_createArticle())f_getArticleTemplate(86,'<%=new SimpleDateFormat("MM.dd").format(new Date())%>工作日志');">工作日志</div>
-                <div onclick="if(f_createArticle()){f_getArticleTemplate(89,'<%=DateUtil.getCurrWeekDays()%>周工作总结');$('#csort').val(1);}">周工作总结</div>
+                <div onclick="if(f_createArticle()){$('#articleTitle').val('未命名规章制度');$('#csort').val(8);}">规章制度</div>
+                <div onclick="if(f_createArticle()){$('#articleTitle').val('<%=new SimpleDateFormat("yyyy.MM").format(new Date())%>月考勤记录');$('#csort').val(7);}">考勤记录</div>
                 <div class="menu-sep"></div>
-                <div onclick="if(f_createArticle()){f_getArticleTemplate(261,'<%=new SimpleDateFormat("MM.dd").format(new Date())%>周例会');$('#csort').val(4);}">周例会</div>
+                <div onclick="if(f_createArticle()){f_getArticleTemplate(87,'<%=new SimpleDateFormat("yyyy.MM").format(new Date())%>月工作计划');$('#csort').val(6);}">工作计划</div>
+                <div onclick="if(f_createArticle()){f_getArticleTemplate(86,'<%=new SimpleDateFormat("MM.dd").format(new Date())%>工作日志');$('#csort').val(10);}">工作日志</div>
+                <div onclick="if(f_createArticle()){f_getArticleTemplate(89,'<%=DateUtil.getCurrWeekDays()%>周工作总结');$('#csort').val(1);}">工作总结</div>
+                <div class="menu-sep"></div>
+                <div onclick="if(f_createArticle()){f_getArticleTemplate(261,'<%=new SimpleDateFormat("MM.dd").format(new Date())%>周例会');$('#csort').val(4);}">部门会议</div>
                 <div onclick="if(f_createArticle()){f_getArticleTemplate(270,'<%=new SimpleDateFormat("MM.dd").format(new Date())%>学习会');$('#csort').val(5);}">学习会</div>
             </div>
         </div>
 
         <div class="menu-sep"></div>
         <div>
-            <span>销售</span>
+            <span>软件开发</span>
             <div style="width: 150px;">
-                <div onclick="if(f_createArticle())f_getArticleTemplate(456,'<%=new SimpleDateFormat("MM.dd").format(new Date())%>客户拜访报告');$('#csort').val(3);">客户拜访报告</div>
+                <div onclick="if(f_createArticle()){f_getArticleTemplate(103,'未命名需求');$('#csort').val(9);}">软件需求</div>
+                <div onclick="if(f_createArticle()){f_getArticleTemplate(104,'未命名BUG');$('#csort').val(2);}$('#bugTr').css('display','');">软件BUG</div>
             </div>
         </div>
 
         <div class="menu-sep"></div>
         <div>
-            <span>软件</span>
+            <span>市场销售</span>
             <div style="width: 150px;">
-                <div onclick="if(f_createArticle())f_getArticleTemplate(103,'需求');">需求</div>
-                <div onclick="if(f_createArticle()){f_getArticleTemplate(104,'BUG');$('#csort').val(2);}$('#bugTr').css('display','');">BUG</div>
+                <div onclick="if(f_createArticle()){f_getArticleTemplate(456,'<%=new SimpleDateFormat("MM.dd").format(new Date())%>客户拜访报告');$('#csort').val(3);}">客户拜访报告</div>
             </div>
         </div>
-
+        <div class="menu-sep"></div>
+        <div>
+            <span>模板</span>
+            <div style="width: 150px;">
+                <div onclick="if(f_createArticle()){$('#articleTitle').val('未命名模板');$('#csort').val(99);}">撰写模板</div>
+            </div>
+        </div>
     </div>
     <script type="text/javascript">
         var myheight=290;

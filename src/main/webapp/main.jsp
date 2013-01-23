@@ -356,23 +356,26 @@
                     </div>
                     <hr/>
 
-                    <div><a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_getFolderArticles(62,'规范');return false;">常用规范</a>
-                        <a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_getFolderArticles(111,'考勤');return false;">考勤记录</a>
+                    <div><a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_getCsortList(8);return false;">规章制度</a>
+                        <a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_getCsortList(7);return false;">考勤记录</a>
                     </div>
                     <div>
                         <a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_getCsortList(4);return false;">部门会议</a>
                         <a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_getCsortList(5);return false;">学习会</a>
                         </div>
-                    <div><a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_getFolderArticles(13,'计划');return false;">工作计划</a>
-                        <a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_getCsortList(1);return false;">周工作总结</a></div>
-
-                    <hr/>
-                    <div><a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_getFolderArticles(85,'软件产品');return false;">软件产品</a>
-                             <a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_getFolderArticles(28,'项目合作');return false;">软件项目</a>
+                    <div>
+                        <a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_getCsortList(6);return false;">工作计划</a>
+                        <a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_getCsortList(1);return false;">工作总结</a>
+                        <a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_getCsortList(10);return false;">工作日志</a>
                     </div>
-                    <div><a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_getCsortList(2);return false;">软件BUG</a></div>
                     <hr/>
-                    <div><a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_getCsortList(3);return false;">拜访报告</a></div>
+                    <div>
+                        <a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_getCsortList(9);return false;">软件需求</a>
+                        <a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_getCsortList(2);return false;">软件BUG</a></div>
+                    <hr/>
+                    <div><a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_getCsortList(3);return false;">客户拜访报告</a></div>
+                    <hr/>
+                    <div><a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_getCsortList(99);return false;">撰写模板</a></div>
                 </div>
 
 
