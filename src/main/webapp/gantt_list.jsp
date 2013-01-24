@@ -90,6 +90,7 @@ function f_getArticles(){
                     }
                 }
             },
+            {field:'prjname',title:"项目名称",width:150},
             {field:'cname',title:'进程名称',width:250,
                 formatter:function(value,row,index){
                     var title="";
