@@ -190,10 +190,15 @@ public class MainController extends BaseController {
     @RequestMapping("/show")
     public String show(ArticleModel model,HttpServletRequest request,HttpSession session){
         UserModel user = (UserModel)session.getAttribute("adminModel");
-        if(NullUtil.isNotNull(user))
+        //是否收藏
+        int isFavorites=0;
+        if(NullUtil.isNotNull(user)){
             model.setAdminId(user.getUserid());
+            isFavorites= this.noteDao.checkIsFavorites(user.getUserid(),model.getId());
+        }
         Map item = noteDao.getArticle(model);
         request.setAttribute("item",item);
+        item.put("isFavorites",isFavorites);
         List articleViews = this.noteDao.getArticleViews(model);
         request.setAttribute("articleViews",articleViews);
      return "show";
@@ -427,6 +432,17 @@ public class MainController extends BaseController {
         List itemList = this.noteDao.getVisitReport();
         return  toJson(itemList);
     }
+
+
+    /**
+     * 添加笔记至收藏夹
+     * */
+    @RequestMapping("/main/addFavorites")
+    public void addFavorites(HttpSession session,String articleid){
+        UserModel user = (UserModel)session.getAttribute("adminModel");
+        this.noteDao.addFavorites(user.getUserid(),articleid);
+    }
+
 
     /**
      * 截取字符串

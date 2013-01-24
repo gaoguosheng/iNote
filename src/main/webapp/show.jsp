@@ -163,6 +163,16 @@
              ue.setContent("");
          }
 
+
+         /**
+          * 添加至收藏夹
+          * */
+         function f_addFavorites(){
+             $GGS.ajax("main/addFavorites<%=Config.EXT%>",{articleid:${item.id}});
+             location.reload();
+         }
+
+
          /**
           * 初始化
           * */
@@ -189,10 +199,11 @@
             <td>
                 <div align="center" class="normalFont">
                     <span class="titleFont">${item.title}</span><br/>
-                    ${item.realname}&nbsp;&nbsp;${item.creattime}&nbsp;&nbsp;阅读（<span style="color: red;">${item.views}</span>）
-
-                    <a href="#" onclick="f_getCommentList();">评论（<span id="commentCountSpan" style="color: red;" ></span>） </a>
+                    ${item.realname}&nbsp;&nbsp;${item.creattime}<br/>
                     <c:if test="${sessionScope.adminModel!=null}">
+                        <a href="#"  onclick="f_addFavorites();return false;">${item.isFavorites==1?'取消收藏':'收藏'}</a>
+                        &nbsp;&nbsp;阅读（<span style="color: red;">${item.views}</span>）
+                        <a href="#" onclick="f_getCommentList();">评论（<span id="commentCountSpan" style="color: red;" ></span>） </a>
                         <a href="#"  onclick="f_addComment();return false;">点评</a>
                     </c:if>
                 </div>

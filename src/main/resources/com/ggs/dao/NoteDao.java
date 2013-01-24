@@ -395,7 +395,7 @@ public class NoteDao {
     }
 
     /**
-     * 获取文章  日历模式
+     * 获取文章
      * */
     public PageModel getArticlesGridData(ArticleModel model){
         StringBuilder sql = new StringBuilder();
@@ -481,6 +481,10 @@ public class NoteDao {
         }
 
 
+        //查询收藏夹文章
+        if(NullUtil.isNotNull(model.getIsfavorites())){
+            sql.append(" and a.id in (select articleid from t_Favorites where userid="+model.getAdminId()+")");
+        }
 
 
         //排序
@@ -561,6 +565,9 @@ public class NoteDao {
         //被我评论的笔记
         sql.append(" union");
         sql.append(" select 18,count(*) from (select distinct articleid from t_article_comments where userid="+adminid+")");
+        //我收藏的笔记
+        sql.append(" union");
+        sql.append(" select 19,count(*) from (select distinct articleid from t_Favorites where userid="+adminid+")");
 
         return this.sqLiteUtil.queryForList(sql.toString());
     }
@@ -693,6 +700,26 @@ public class NoteDao {
      * */
     public List getVisitReport(){
         return this.sqLiteUtil.queryForList("select * from v_visitreport");
+    }
+
+    /**
+     * 添加/删除收藏夹
+     * */
+    public void addFavorites(String userid,String articleid){
+        int counter = sqLiteUtil.queryForInt("select count(*) from t_Favorites where userid=? and articleid=?",new Object[]{userid,articleid});
+        if(counter==0){
+            this.sqLiteUtil.update("insert into t_Favorites(userid,articleid) values(?,?)",new Object[]{userid,articleid});
+        }else{
+            this.sqLiteUtil.update("delete from  t_Favorites where userid=? and articleid=?",new Object[]{userid,articleid});
+        }
+    }
+
+    /***
+     * 检查是否收藏
+     * */
+    public int checkIsFavorites(String userid,String articleid){
+        int counter = sqLiteUtil.queryForInt("select count(*) from t_Favorites where userid=? and articleid=?",new Object[]{userid,articleid});
+        return counter;
     }
 
    }

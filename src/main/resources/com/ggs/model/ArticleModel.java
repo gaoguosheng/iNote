@@ -28,6 +28,15 @@ public class ArticleModel extends  BaseModel{
     private String hasmycomment;
     private String csort;
     private String buglevel;
+    private String isfavorites;
+
+    public String getIsfavorites() {
+        return isfavorites;
+    }
+
+    public void setIsfavorites(String isfavorites) {
+        this.isfavorites = isfavorites;
+    }
 
     public String getBuglevel() {
         return buglevel;
