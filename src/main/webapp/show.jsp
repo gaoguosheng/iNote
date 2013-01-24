@@ -201,10 +201,10 @@
                     <span class="titleFont">${item.title}</span><br/>
                     ${item.realname}&nbsp;&nbsp;${item.creattime}<br/>
                     <c:if test="${sessionScope.adminModel!=null}">
-                        <a href="#"  onclick="f_addFavorites();return false;">${item.isFavorites==1?'取消收藏':'收藏'}</a>
+                        <a href="#" class="easyui-linkbutton" data-options="plain:true"  onclick="f_addFavorites();return false;"><img src="images/favorites.jpg" border="0">${item.isFavorites==1?'取消收藏':'收藏'}</a>
                         &nbsp;&nbsp;阅读（<span style="color: red;">${item.views}</span>）
-                        <a href="#" onclick="f_getCommentList();">评论（<span id="commentCountSpan" style="color: red;" ></span>） </a>
-                        <a href="#"  onclick="f_addComment();return false;">点评</a>
+                        <a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_getCommentList();">评论（<span id="commentCountSpan" style="color: red;" ></span>） </a>
+                        <a href="#"  class="easyui-linkbutton" data-options="plain:true" onclick="f_addComment();return false;">点评</a>
                     </c:if>
                 </div>
             </td>
