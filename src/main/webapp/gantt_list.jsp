@@ -102,6 +102,7 @@ function f_getArticles(){
                     }
                     return "<span style='"+color+"' title='"+title+"'>"+row.cname+"</span>";
                 }},
+
             {field:'realname',title:'负责人',width:80 },
             {field:'pc',title:'完成进度',width:150, sortable:true,
                 formatter:function(value,row,index){
@@ -161,7 +162,10 @@ function f_getArticles(){
                 formatter:function(value,row,index){
                     return "<div title='"+row.memo+"'>"+row.memo+"</div>";
                 }
-            }
+            },
+            {field:'creatname',title:'创建人',width:80 },
+            {field:'creattime',title:'创建时间',width:100 }
+
 
         ]],
         toolbar:'#tb',
