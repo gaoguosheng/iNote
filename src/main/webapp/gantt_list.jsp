@@ -355,7 +355,7 @@ function f_openGanttDialog(proid){
     }else{
         $("#optionalBody").css("display","none");
         $("#cname").val("新工作进程");
-        $("#userid").attr("selectedIndex","0");
+        $("#userid").val(${sessionScope.adminModel.userid});
         $('#startdate').datebox('setValue','<%=DateUtil.getDate("yyyy-MM-dd")%>');
         $('#enddate').datebox('setValue','<%=DateUtil.getDate("yyyy-MM-dd")%>');
         $("#pc").attr("selectedIndex","0");
