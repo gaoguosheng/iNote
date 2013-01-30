@@ -296,7 +296,7 @@ function f_openGanttDialog(proid){
             //创建人
             $("#realdate").attr("disabled","disabled");
             $("#pc").attr("disabled","disabled");
-            //$("#memo").attr("disabled","disabled");
+
         }
         else if(json.userid=="${sessionScope.adminModel.userid}" && json.creatid!="${sessionScope.adminModel.userid}"){
             //负责人
@@ -308,7 +308,7 @@ function f_openGanttDialog(proid){
             $("#priority").attr("disabled","disabled");
             $("#difficulty").attr("disabled","disabled");
             $("#delBtn").css("display","none");
-        }else if( json.pc==100 || (json.userid!="${sessionScope.adminModel.userid}" && json.creatid!="${sessionScope.adminModel.userid}")){
+        }else if((json.userid!="${sessionScope.adminModel.userid}" && json.creatid!="${sessionScope.adminModel.userid}")){
             $("#okBtn").css("display","none");
             $("#delBtn").css("display","none");
             $("#cname").attr("disabled","disabled");
@@ -318,14 +318,13 @@ function f_openGanttDialog(proid){
             $("#prjid").attr("disabled","disabled");
             $("#priority").attr("disabled","disabled");
             $("#difficulty").attr("disabled","disabled");
-            $("#delBtn").css("display","none");
             $("#realdate").attr("disabled","disabled");
             $("#pc").attr("disabled","disabled");
-            $("#memo").attr("disabled","disabled");
+
         }
 
         //只要进度大于0，计划日期等信息不能修改，而且不能删除
-       if(json.pc>0){
+       if(json.pc>0 && json.pc<100){
            $("#delBtn").css("display","none");
            $("#cname").attr("disabled","disabled");
            $("#userid").attr("disabled","disabled");
@@ -337,6 +336,15 @@ function f_openGanttDialog(proid){
            if(json.creatid=="${sessionScope.adminModel.userid}" && json.userid!="${sessionScope.adminModel.userid}"){
                $("#okBtn").css("display","none");
            }
+       }else if (json.pc==100){
+           $("#pc").attr("disabled","disabled");
+           $("#delBtn").css("display","none");
+           $("#startEndDateBody").css("display","none");
+           $("#startEndDateSpanBody").css("display","");
+           $("#priority").attr("disabled","disabled");
+           $("#difficulty").attr("disabled","disabled");
+           $("#userid").attr("disabled","disabled");
+
        }
 
 
@@ -383,11 +391,14 @@ function f_saveProgress(){
         f_alertError("工作进程名称不能为空！");
         return false;
     }
-
+    if($("#prjid").val()=="-1"){
+        f_alertError("请选择进程所属项目！");
+        return false;
+    }
 
     if($("#proid").val()){
-        if($("#memo").val()==""){
-            f_alertError("工作进展情况不能为空！如下：<br/>12.4 需求整理及ER图设计<br/>12.5 创建数据库及软件工程");
+        if($.trim($("#memo").val())==""  || $.trim($("#memo").val()).length<10){
+            f_alertError("工作进展情况不能为空或者小于10个字符！<br/>格式如下：<br/>12.4 需求整理及ER图设计<br/>12.5 创建数据库及软件工程");
             return false;
         }
     }
@@ -509,13 +520,17 @@ $(function(){
         </tr>
             </c:if>
 
-        <tr>
-            <td align="right" valign="top">所属项目</td>
-            <td colspan="3"><select id="prjid" style="width: 200px;"></select></td>
-        </tr>
+
         <tr>
             <td align="right" valign="top">进程名称</td>
             <td colspan="3"><input type="text" id="cname" style="width: 400px;"></td>
+        </tr>
+        <tr>
+            <td align="right" valign="top">所属项目</td>
+            <td colspan="3">
+            <select id="prjid" style="width: 200px;">
+                <option value="-1">==请选择==</option>
+            </select></td>
         </tr>
         <tr>
             <td align="right" valign="top">负责人</td>
