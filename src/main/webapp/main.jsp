@@ -116,10 +116,15 @@
                             if(row.isread==0){
                                 style="color:green";
                             }
-                            return "<span style='"+style+"'>"+row.title+"</span>";
+                            return "<a href='show<%=Config.EXT%>?id="+row.id+"' target='_blank' title='打开笔记'><span style='"+style+"'>"+row.title+"</span></a>";
                         }
                     },
-                    {field:'foldername',title:'文件夹',width:150 },
+                    {field:'foldername',title:'文件夹',width:150,
+                        formatter: function(value,row,index){
+                            return "<a href='#' onclick='f_getFolderArticles("+row.folderid+"); return false;' title='打开"+row.foldername+"文件夹下所有笔记'>"+row.foldername+"</a>";
+                        }
+                    },
+
                     {field:'realname',title:'创建人',width:60},
                     {field:'views',title:'查看',width:60,align:'center',sortable:true},
 
@@ -151,7 +156,7 @@
                 striped: true,
                 singleSelect:true,
                 onClickRow:function(rowIndex, rowData){
-                    window.open("show<%=Config.EXT%>?id="+rowData.id,rowData.id);
+
                 }
 
             });
@@ -343,7 +348,7 @@
     <%@include file="top.jsp"%>
     <table border="0" cellpadding="0" cellspacing="0" width="100%" class="borderTable normalFont">
         <tr>
-            <td valign="top" width="160">
+            <td valign="top" width="180">
 
                 <div style="text-align: left;margin: 10px;">
                     <div>
@@ -394,7 +399,6 @@
             </td>
             <td valign="top">
                 <!-- 列表-->
-
                 <table id="gridTable" class="easyui-datagrid"   iconCls="icon-search"
                        rownumbers="true" pagination="true">
                 </table>
@@ -403,6 +407,23 @@
                     $("#gridTable").css("height",screen.availHeight-myHeight);
                 </script>
                 </div>
+            </td>
+            <td valign="top" width="200px">
+                <table id="userListGrid" class="easyui-datagrid" title="用户通讯录"
+                       data-options="singleSelect:true,collapsible:false,url:'main/getUsers<%=Config.EXT%>'">
+                    <thead>
+                    <tr>
+                        <th data-options="field:'username',width:40">帐号</th>
+                        <th data-options="field:'realname',width:60">姓名</th>
+                        <th data-options="field:'mobile',width:100">手机</th>
+                        <th data-options="field:'qq',width:100">QQ</th>
+                    </tr>
+                    </thead>
+                </table>
+                <script type="text/javascript">
+                    var myHeight=260;
+                    $("#userListGrid").css("height",screen.availHeight-myHeight);
+                </script>
             </td>
         </tr>
     </table>
@@ -429,10 +450,10 @@
     </script>
     <div id="tb" style="padding: 5px;">
         <a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-reload'" onclick="f_refreshGrid();" >刷新</a>
-        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-ok',plain:true" onclick="f_updateReadAllFlag();return false;" title="全部置为已读">全部置为已读</a>
+        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-ok',plain:true" onclick="f_updateReadAllFlag();return false;" title="全部标识已读" style="display: none">标识已读</a>
         <span>
                        <input class="easyui-searchbox" data-options="prompt:'请输入关键字',menu:'#mm',
-			searcher:function(value,name){if (name==1){f_getArticles({title:value});}else{f_getArticles({content:value});} }" style="width:200px"/>
+			searcher:function(value,name){if (name==1){f_getArticles({title:value});}else{f_getArticles({content:value});} }" style="width:180px"/>
                         <div id="mm" style="width:120px">
                             <div data-options="name:'1'">标题</div>
                             <div data-options="name:'2'">内容</div>
@@ -441,8 +462,8 @@
                        <input id="creattime1" class="easyui-datebox" data-options="formatter:myformatter" >
                        -
                        <input id="creattime2" class="easyui-datebox" data-options="formatter:myformatter" >
-            <a href="#"  class="easyui-menubutton" data-options="menu:'#statusDiv'" >状态</a>
-                        <a href="#"  class="easyui-menubutton" data-options="menu:'#OtherUserDiv'">人员</a>
+            <a href="#"  class="easyui-menubutton" data-options="menu:'#statusDiv'" style="display: none">状态</a>
+                        <a href="#"  class="easyui-menubutton" data-options="menu:'#OtherUserDiv'" style="display: none">人员</a>
                        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true" title="检索笔记" onclick="f_query();" >检索</a>
 
 

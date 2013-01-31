@@ -71,8 +71,6 @@
             tb+="<td>等级</td>";
             tb+="<td>在线时长</td>";
             tb+="<td>剩余时长</td>";
-            tb+="<td>手机</td>";
-            tb+="<td>QQ</td>";
             tb+="</tr>";
             var div=""
             for(var i=0;i<users.length;i++){
@@ -117,8 +115,6 @@
                 tb+="<td><span title='在线"+currhour+"小时，还要"+remainhour+"小时升级' style='color:#ff8c00;font-weight: bold;'>"+currgrade+"级 "+img+"</span></td>";
                 tb+=" <td><img src='images/grades/times.png'>"+currhour+"小时</td>";
                 tb+=" <td><img src='images/grades/badtimes.png'>"+remainhour+"小时</td>";
-                tb+=" <td>"+users[i].mobile+"</td>";
-                tb+=" <td>"+users[i].qq+"</td>";
                 tb+="</tr>";
             }
             tb+="</table>";
