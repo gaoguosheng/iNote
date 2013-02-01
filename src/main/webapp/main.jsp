@@ -182,7 +182,7 @@
             //我的笔记类型
             myType=noteType.myNote;
             selName="我的笔记";
-            f_getArticles({userid:${sessionScope.adminId}});
+            f_getArticles({userid:${sessionScope.adminModel.userid}});
         }
 
         /**
@@ -220,7 +220,7 @@
             var users = $GGS.getJSON("main/getUsers<%=Config.EXT%>",{});
             var div="";
             for(var i=0;i<users.length;i++){
-                //if(users[i].id=="${sessionScope.adminId}")continue;
+                //if(users[i].id=="${sessionScope.adminModel.userid}")continue;
                 div+="<div onclick='f_otherNote("+users[i].id+",\""+users[i].realname+"\");'>"+users[i].realname+"</div>";
             }
             $("#OtherUserDiv").html(div);
@@ -238,7 +238,7 @@
             }else if(status==2){
                 selName="我发起的事项";
             }
-            f_getArticles({assignid:${sessionScope.adminId},status:status});
+            f_getArticles({assignid:${sessionScope.adminModel.userid},status:status});
         }
 
         /**

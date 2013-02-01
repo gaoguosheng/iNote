@@ -26,7 +26,7 @@
             var seluserid =document.all.useridSel.value;
             var folderNodes = $GGS.getJSON("main/getFolders<%=Config.EXT%>",{userid:seluserid});
             var isSelf=true;
-            if("${sessionScope.adminId}"!=$("#useridSel").val()){
+            if("${sessionScope.adminModel.userid}"!=$("#useridSel").val()){
                 isSelf=false;
             }
             $.fn.zTree.init($("#folderTree"),
@@ -51,7 +51,7 @@
                             showIcon:true,
                             showTitle: false,
                             addDiyDom:function(treeId, treeNode){
-                                if("${sessionScope.adminId}"!=$("#useridSel").val()){
+                                if("${sessionScope.adminModel.userid}"!=$("#useridSel").val()){
                                     return;
                                 }
                                 //if(treeNode.isParent)return;
@@ -134,7 +134,7 @@
             var articleNodes =$GGS.getJSON("main/getArticles<%=Config.EXT%>",data);
             $("#articleSpan").html("共有 <font color='red'>"+articleNodes.length+"</font> 个笔记");
             var isSelf=true;
-            if("${sessionScope.adminId}"!=$("#useridSel").val()){
+            if("${sessionScope.adminModel.userid}"!=$("#useridSel").val()){
                 isSelf=false;
             }
             $.fn.zTree.init($("#articleTree"),
@@ -154,7 +154,7 @@
                             showIcon:true,
                             showTitle: false,
                             addDiyDom:function(treeId, treeNode){
-                                if("${sessionScope.adminId}"!=$("#useridSel").val()){
+                                if("${sessionScope.adminModel.userid}"!=$("#useridSel").val()){
                                     return;
                                 }
                                 var aObj = $("#" + treeNode.tId + "_a");
@@ -511,7 +511,7 @@
 
         //初始化按钮状态
         function f_initBtnStatus(){
-            if("${sessionScope.adminId}"!=$("#useridSel").val()){
+            if("${sessionScope.adminModel.userid}"!=$("#useridSel").val()){
                 $("#createFolderBtn").css("display","none");
                 $("#createNoteBtn").css("display","none");
                 $("#saveNoteBtn").css("display","none");
@@ -555,7 +555,7 @@
             //加载用户列表
             f_getUsers();
             //选择当前登陆用户
-            $("#useridSel").val("${sessionScope.adminId}");
+            $("#useridSel").val("${sessionScope.adminModel.userid}");
             //加载文件夹
             f_getFolders();
             //加载文章

@@ -38,7 +38,7 @@ public class SessionListener implements HttpSessionListener {
         }
         //更新在线时间
         long times =session.getLastAccessedTime()-  session.getCreationTime();
-        this.noteDao.updateOnlinetimes((String)session.getAttribute("adminId"),times/1000/60);
+        this.noteDao.updateOnlinetimes(((UserModel)session.getAttribute("adminModel")).getUserid(),times/1000/60);
 
     }
 }

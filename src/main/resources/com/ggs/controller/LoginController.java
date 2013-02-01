@@ -2,6 +2,7 @@ package com.ggs.controller;
 
 import com.ggs.dao.NoteDao;
 import com.ggs.model.UserModel;
+import com.ggs.util.NullUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -41,7 +42,6 @@ public class LoginController extends  BaseController {
         if(flag){
             UserModel userModel = this.noteDao.getUserModel(username);
             session.setAttribute("admin",username);
-            session.setAttribute("adminId",userModel.getUserid());
             session.setAttribute("adminModel",userModel);
             Cookie cookie = new Cookie("username",username);
             cookie.setMaxAge(3600*24*30);

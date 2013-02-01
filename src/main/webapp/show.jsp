@@ -66,7 +66,7 @@
              var sel =document.all.assignid;
              var users = $GGS.getJSON("main/getUsers<%=Config.EXT%>",{});
              for(var i=0;i<users.length;i++){
-                 if(users[i].id=="${sessionScope.adminId}")continue;
+                 if(users[i].id=="${sessionScope.adminModel.userid}")continue;
                  sel.options[sel.length]=new Option(users[i].realname,users[i].id);
              }
          }
@@ -228,7 +228,7 @@
         </div>
     </div>
     <c:if test="${sessionScope.adminModel!=null}">
-        <c:if test="${sessionScope.adminId==item.assignid && item.status==0}">
+        <c:if test="${sessionScope.adminModel.userid==item.assignid && item.status==0}">
             <div class="normalFont">
                 <div>不做处理，直接转派给：<select id="assignid" style="height: 26px;width: 100px;"></select>
                     <a  class="easyui-linkbutton" data-options="iconCls:'icon-ok'" onclick="f_updateAssign();">Ok</a>
@@ -244,7 +244,7 @@
             </div>
         </c:if>
 
-     <c:if test="${sessionScope.adminId==item.userid && item.status==1}">
+     <c:if test="${sessionScope.adminModel.userid==item.userid && item.status==1}">
             <div class="normalFont">
                 <div>
                     <a title="由于指派人未处理完成，或者处理不当，退回重新处理" class="easyui-linkbutton" data-options="iconCls:'icon-back'" onclick="f_returnAssign();">退回处理</a>
