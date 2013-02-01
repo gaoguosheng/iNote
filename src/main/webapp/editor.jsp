@@ -619,7 +619,7 @@
                 <table cellpadding="0" cellspacing="0" border="0" width="100%" class="normalFont">
                     <tr>
                         <td width="350px">
-                            <input type="text" title="标题，最多18个字符" name="articleTitle" maxlength="18" id="articleTitle" style="width: 400px;color: #1e90ff;font-size: 12pt;font-weight: bold;" onblur="f_trim(this);"/>
+                            <input type="text" title="标题" name="articleTitle" id="articleTitle" style="width: 400px;color: #1e90ff;font-size: 12pt;font-weight: bold;" onblur="f_trim(this);"/>
                         </td>
                         <td align="right">
                             <c:if test="${sessionScope.admin!=null}">

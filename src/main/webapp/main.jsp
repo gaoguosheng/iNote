@@ -352,16 +352,17 @@
 
                 <div style="text-align: left;margin: 10px;">
                     <div>
-                        <a href="#" class="easyui-menubutton" data-options="menu:'#myNoteDiv',plain:true" onclick="f_myNote();return false;" title="我撰写的所有笔记">我的笔记（<span id="myStatusSpan13" style="color: red;"></span>）</a>
-                        <a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_getFavoritesList();return false;" title="我收藏的笔记">我的收藏夹（<span style="color: red;"  id="myStatusSpan19"></span>）</a>
-                    </div>
-                    <hr/>
-                    <div>
                         <a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_allNote();return false;" title="全部笔记">全部（<span style="color: red;" id="myStatusSpan15"></span>）</a>
                         <a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_getArticles({creattime1:'<%=DateUtil.getDate("yyyy-MM-dd")%>'});return false;" title="今天笔记">今天（<span style="color: red;" id="myStatusSpan14"></span>）</a>
 
                     </div>
                     <hr/>
+                    <div>
+                        <a href="#" class="easyui-menubutton" data-options="menu:'#myNoteDiv',plain:true" onclick="f_myNote();return false;" title="我撰写的所有笔记">我的笔记（<span id="myStatusSpan13" style="color: red;"></span>）</a>
+                        <a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_getFavoritesList();return false;" title="我收藏的笔记">我的收藏夹（<span style="color: red;"  id="myStatusSpan19"></span>）</a>
+                    </div>
+                    <hr/>
+
                     <div>
                         <a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="f_getMyStatusArticle(0);return false;" title='指派给我或待确认完成的事项'>我待处理事项（<span style="color: red;"  id="myStatusSpan10"></span>）</a>
                     </div>
