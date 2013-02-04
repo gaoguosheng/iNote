@@ -46,14 +46,14 @@ if(ServletFileUpload.isMultipartContent(request)){
         try{
             if(!fis.isFormField() && fis.getName().length()>0){
                 fileName = fis.getName();
-
+                /*
 				Pattern reg=Pattern.compile("[.]rar|doc|zip|pdf|txt|swf|wmv|xls$");
 				Matcher matcher=reg.matcher(fileName);
 				if(!matcher.find()) {
 					state = "文件类型不允许！";
 					break;
 				}
-
+                 */
 				contentType = fileName.substring(fileName.lastIndexOf("."),fileName.length());
 				
                 url = realPath+"/"+new Date().getTime()+fileName.substring(fileName.lastIndexOf("."),fileName.length());
