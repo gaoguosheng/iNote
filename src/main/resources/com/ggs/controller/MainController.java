@@ -443,6 +443,17 @@ public class MainController extends BaseController {
         this.noteDao.addFavorites(user.getUserid(),articleid);
     }
 
+    /**
+     * 谁看过我
+     * */
+    @RequestMapping("/main/getWhoLookMe")
+    @ResponseBody
+    public Object getWhoLookMe(HttpSession session){
+        UserModel user = (UserModel)session.getAttribute("adminModel");
+        List itemList = this.noteDao.getWhoLookMe(user.getUserid());
+        return  toJson(itemList);
+    }
+
 
     /**
      * 截取字符串

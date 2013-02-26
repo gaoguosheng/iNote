@@ -722,4 +722,12 @@ public class NoteDao {
         return counter;
     }
 
+    /**
+     * 谁看过我
+     * */
+   public List getWhoLookMe(String userid){
+    return sqLiteUtil.queryForList("select * from v_article_views " +
+            "where articleid in (select id from v_article where userid=?) order by id desc limit 100",new Object[]{userid});
+    }
+
    }

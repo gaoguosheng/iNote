@@ -421,13 +421,25 @@
                     </tr>
                     </thead>
                 </table>
-                <script type="text/javascript">
-                    var myHeight=260;
-                    $("#userListGrid").css("height",screen.availHeight-myHeight);
-                </script>
+                <table id="whoLookMeGrid" class="easyui-datagrid" title="谁看过我 TOP100"
+                       data-options="singleSelect:true,collapsible:false,url:'main/getWhoLookMe<%=Config.EXT%>'">
+                    <thead>
+                    <tr>
+                        <th data-options="field:'realname',width:60">姓名</th>
+                        <th data-options="field:'title',width:200,formatter:formatWhoLookMe">标题</th>
+                    </tr>
+                    </thead>
+                </table>
             </td>
         </tr>
     </table>
+    <script type="text/javascript">
+        function formatWhoLookMe(val,row){
+            return "<a href='show<%=Config.EXT%>?id="+row.articleid+"' target='_blank' title='打开笔记'>"+row.title+"</a>";
+        }
+        $("#userListGrid").css("height",(screen.availHeight-myHeight)/2);
+        $("#whoLookMeGrid").css("height",(screen.availHeight-myHeight)/2);
+    </script>
 
 
     <jsp:include page="/foot.jsp" flush="true"></jsp:include>
