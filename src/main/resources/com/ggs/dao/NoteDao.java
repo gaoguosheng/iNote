@@ -727,7 +727,7 @@ public class NoteDao {
      * */
    public List getWhoLookMe(String userid){
     return sqLiteUtil.queryForList("select * from v_article_views " +
-            "where articleid in (select id from v_article where userid=?) order by id desc limit 100",new Object[]{userid});
+            "where articleid in (select id from v_article where userid=?) and userid!=?  order by id desc limit 100",new Object[]{userid,userid});
     }
 
    }
