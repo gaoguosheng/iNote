@@ -19,6 +19,8 @@
 
 
 <%
+    request.setCharacterEncoding("UTF-8");
+    response.setCharacterEncoding("UTF-8");
 //仅做示例用，请自行修改
 //保存文件路径
 String filePath = "upload/"+ DateUtil.getNumYearMonth()+"/";

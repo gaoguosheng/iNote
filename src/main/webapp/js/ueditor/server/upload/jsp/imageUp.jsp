@@ -19,7 +19,8 @@
 
 
 <%
-
+    request.setCharacterEncoding("UTF-8");
+    response.setCharacterEncoding("UTF-8");
 //保存文件路径
 //ggs修改 0526 新增新文件名
 String newFileName="";

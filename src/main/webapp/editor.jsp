@@ -674,7 +674,7 @@
                 <div onclick="if(f_createArticle()){f_getArticleTemplate(89,'<%=DateUtil.getCurrWeekDays()%>周工作总结');$('#csort').val(1);}">工作总结</div>
                 <div class="menu-sep"></div>
                 <div onclick="if(f_createArticle()){f_getArticleTemplate(261,'<%=new SimpleDateFormat("MM.dd").format(new Date())%>周例会');$('#csort').val(4);}">部门会议</div>
-                <div onclick="if(f_createArticle()){f_getArticleTemplate(270,'<%=new SimpleDateFormat("MM.dd").format(new Date())%>学习会');$('#csort').val(5);}">学习会</div>
+                <div onclick="if(f_createArticle()){f_getArticleTemplate(270,'<%=new SimpleDateFormat("MM.dd").format(new Date())%>学习会《主题》');$('#csort').val(5);}">学习会</div>
             </div>
         </div>
 
